@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2023 at 12:52 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Feb 20, 2023 at 09:19 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
@@ -39,6 +39,105 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `name`, `image`) VALUES
 (1, 'Injections', 'upload/categories/7177-2023-02-13.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dental_networks`
+--
+
+CREATE TABLE `dental_networks` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `clinic_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `mobile` text DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `latitude` text DEFAULT NULL,
+  `longitude` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `dental_networks`
+--
+
+INSERT INTO `dental_networks` (`id`, `user_id`, `clinic_name`, `email`, `mobile`, `address`, `latitude`, `longitude`) VALUES
+(1, 1, 'Sanjay Dental Clinic', 'sanjaydentals@gmail.com', '8743210912', 'Thirunelveli', '78.23310', '10.98664');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lab_networks`
+--
+
+CREATE TABLE `lab_networks` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `center_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `mobile` text DEFAULT NULL,
+  `manager_name` varchar(255) DEFAULT NULL,
+  `center_address` text DEFAULT NULL,
+  `operational_hours` text DEFAULT NULL,
+  `latitude` float DEFAULT NULL,
+  `longitude` text DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `lab_networks`
+--
+
+INSERT INTO `lab_networks` (`id`, `user_id`, `center_name`, `email`, `mobile`, `manager_name`, `center_address`, `operational_hours`, `latitude`, `longitude`, `image`) VALUES
+(1, 1, 'Renuga Lab\'s', 'labrenuga43@gmail.com', '765410921', 'Sri Yogesh', 'Seppakam', '9:00 - 5:00', 65.9902, '14.2344', '1676876437.8199.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `opd_networks`
+--
+
+CREATE TABLE `opd_networks` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `mobile` text DEFAULT NULL,
+  `latitude` text DEFAULT NULL,
+  `longitude` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `opd_networks`
+--
+
+INSERT INTO `opd_networks` (`id`, `user_id`, `name`, `address`, `email`, `mobile`, `latitude`, `longitude`) VALUES
+(1, 1, 'Vengat Clinic', 'Tambaram,Chennai', 'vengatclinic45@gmail.com', '9076123043', '74.9012', '10.2335');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pharmacy_networks`
+--
+
+CREATE TABLE `pharmacy_networks` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `shop_name` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `email` text DEFAULT NULL,
+  `mobile` text DEFAULT NULL,
+  `latitude` text DEFAULT NULL,
+  `longitude` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pharmacy_networks`
+--
+
+INSERT INTO `pharmacy_networks` (`id`, `user_id`, `shop_name`, `address`, `email`, `mobile`, `latitude`, `longitude`) VALUES
+(1, 1, 'Lalli Pharmacy', 'Chennai', 'lallispharm@gmail.com', '9787012346', '74.09123', '14.29301');
 
 -- --------------------------------------------------------
 
@@ -51,7 +150,7 @@ CREATE TABLE `users` (
   `name` varchar(255) DEFAULT NULL,
   `mobile` text DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -71,6 +170,30 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `dental_networks`
+--
+ALTER TABLE `dental_networks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lab_networks`
+--
+ALTER TABLE `lab_networks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `opd_networks`
+--
+ALTER TABLE `opd_networks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pharmacy_networks`
+--
+ALTER TABLE `pharmacy_networks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -84,6 +207,30 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `dental_networks`
+--
+ALTER TABLE `dental_networks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `lab_networks`
+--
+ALTER TABLE `lab_networks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `opd_networks`
+--
+ALTER TABLE `opd_networks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `pharmacy_networks`
+--
+ALTER TABLE `pharmacy_networks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

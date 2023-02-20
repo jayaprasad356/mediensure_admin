@@ -161,11 +161,22 @@ $fn = new custom_functions;
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
             <ul class="sidebar-menu">
-               
+                <li class="treeview">
+                    <a href="home.php">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
                 <li class="treeview">
                     <a href="categories.php">
                         <i class="fa fa-bullseye"></i>
                         <span>Categories</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="opd_networks.php">
+                        <i class="fa fa-building"></i>
+                        <span>OPD Networks</span>
                     </a>
                 </li>
                 

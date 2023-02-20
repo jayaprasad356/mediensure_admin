@@ -40,7 +40,7 @@ if (isset($_POST['btnLogin'])) {
             
         }
         else{
-            $error['failed'] = "<span class='label label-danger'>Invalid Email or Password!</span>";
+            $error['failed'] = "<span class='label label-danger'>Invalid Mobile or Password!</span>";
         }
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 
-define('DOMAIN_URL', 'https://localhost/mediensure/'); /* chnage to your domain here - don't forget to add forward slash at the end of the URL like this "/" */
+define('DOMAIN_URL', 'https://mediensure.graymatterworks.com/'); /* chnage to your domain here - don't forget to add forward slash at the end of the URL like this "/" */
 define('ALLOW_MODIFICATION', 1);
 define('JWT_SECRET_KEY', '12345678'); /* chnage to your secret key here set it to anything you like*/
 
@@ -15,9 +15,9 @@ class Database
      */
 
     private $db_host = "localhost";  // Change as required
-    private $db_user = "root";  // Change as required
-    private $db_pass = "";  // Change as required
-    private $db_name = "mediensure";    // Change as required
+    private $db_user = "u743445510_medi_en";  // Change as required
+    private $db_pass = "Mediensure@2023";  // Change as required
+    private $db_name = "u743445510_medi_en";    // Change as required
 
     /*
      * Extra variables that are required by other function such as boolean con variable
