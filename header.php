@@ -168,6 +168,12 @@ $fn = new custom_functions;
                     </a>
                 </li>
                 <li class="treeview">
+                    <a href="users.php">
+                        <i class="fa fa-user"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li class="treeview">
                     <a href="categories.php">
                         <i class="fa fa-bullseye"></i>
                         <span>Categories</span>

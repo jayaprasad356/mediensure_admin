@@ -15,10 +15,18 @@
             <!-- Left col -->
             <div class="col-xs-12">
                 <div class="box">
-
+                    <div class="box-header">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="">Filter by Date</label>
+                                <input type="date" class="form-control" name="date" id="date" value="<?php echo date('Y-m-d') ?>">
+                            </div>
+                        </div>
+                    </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">
-                        <table id='users_table' class="table table-hover" data-toggle="table" data-url="api-firebase/get-bootstrap-table-data.php?table=dental_networks" data-page-list="[5, 10, 20, 50, 100, 200]" data-show-refresh="true" data-show-columns="true" data-side-pagination="server" data-pagination="true" data-search="true" data-trim-on-search="false" data-filter-control="true" data-query-params="queryParams" data-sort-name="id" data-sort-order="desc"  data-export-options='{
+                        <table id='users_table' class="table table-hover" data-toggle="table" data-url="api-firebase/get-bootstrap-table-data.php?table=dental_networks" data-page-list="[5, 10, 20, 50, 100, 200]" data-show-refresh="true" data-show-columns="true" data-side-pagination="server" data-pagination="true" data-search="true" data-trim-on-search="false" data-filter-control="true" data-query-params="queryParams" data-sort-name="id" data-sort-order="desc"  
+                        data-show-export="true" data-export-types='["txt","csv"]'  data-export-options='{
                             "fileName": "dental_networks-list-<?= date('d-m-Y') ?>",
                             "ignoreColumn": ["operate"] 
                         }'>
@@ -26,6 +34,7 @@
                                 <tr>
                                     <th data-field="id" data-sortable="true">ID</th>
                                     <th data-field="name">User Name</th>
+                                    <th data-field="datetime" data-sortable="true">Datetime</th>
                                     <th data-field="clinic_name" data-sortable="true">Clinic Name</th>
                                     <th data-field="address" data-sortable="true">Address</th>
                                     <th data-field="email" data-sortable="true">Email</th>
@@ -48,18 +57,17 @@
         <!-- /.row (main row) -->
     </section>
 <script>
-    $('#seller_id').on('change', function() {
-        $('#products_table').bootstrapTable('refresh');
-    });
-    $('#community').on('change', function() {
+    // $('#seller_id').on('change', function() {
+    //     $('#products_table').bootstrapTable('refresh');
+    // });
+    $('#date').on('change', function() {
+        id = $('#date').val();
         $('#users_table').bootstrapTable('refresh');
     });
 
     function queryParams(p) {
         return {
-            "category_id": $('#category_id').val(),
-            "seller_id": $('#seller_id').val(),
-            "community": $('#community').val(),
+            "date": $('#date').val(),
             limit: p.limit,
             sort: p.sort,
             order: p.order,

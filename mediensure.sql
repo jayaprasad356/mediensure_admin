@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2023 at 07:20 AM
+-- Generation Time: Feb 21, 2023 at 02:53 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -141,7 +141,7 @@ CREATE TABLE `pharmacy_networks` (
 --
 
 INSERT INTO `pharmacy_networks` (`id`, `user_id`, `shop_name`, `address`, `email`, `mobile`, `latitude`, `longitude`, `datetime`) VALUES
-(1, 1, 'Lalli Pharmacy', 'Trichy', 'lallispharm@gmail.com', '9787012346', '74.09123', '14.29301', '2023-02-21 11:18:05');
+(1, 1, 'Lalli Pharmacy', 'Trichy', 'lallispharm@gmail.com', '9787012346', '74.09123', '14.29301', '2023-02-20 11:18:05');
 
 -- --------------------------------------------------------
 

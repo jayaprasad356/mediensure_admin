@@ -60,7 +60,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'users') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($_GET['search']);
-        $where .= "WHERE name like '%" . $search . "%' OR id like '%" . $search . "%'  OR mobile like '%" . $search . "%' OR address like '%" . $search . "%' OR email like '%" . $search . "%'";
+        $where .= "WHERE name like '%" . $search . "%' OR id like '%" . $search . "%'  OR mobile like '%" . $search . "%'  OR email like '%" . $search . "%'";
     }
     if (isset($_GET['sort'])){
         $sort = $db->escapeString($_GET['sort']);
@@ -87,17 +87,13 @@ if (isset($_GET['table']) && $_GET['table'] == 'users') {
     foreach ($res as $row) {
 
         
-        $operate = ' <a href="edit-user.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
-        $operate .= ' <a class="btn-xs btn-danger" href="delete-user.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
+        // $operate = ' <a href="edit-user.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
+        // $operate .= ' <a class="btn-xs btn-danger" href="delete-user.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
         $tempRow['email'] = $row['email'];
         $tempRow['mobile'] = $row['mobile'];
-        $tempRow['password'] = $row['password'];
-        $tempRow['address'] = $row['address'];
-        $tempRow['district'] = $row['district'];
-        $tempRow['pincode'] = $row['pincode'];
-        $tempRow['operate'] = $operate;
+        // $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
     $bulkData['rows'] = $rows;
@@ -179,10 +175,10 @@ if (isset($_GET['table']) && $_GET['table'] == 'opd_networks') {
     $where = '';
     $sort = 'id';
     $order = 'DESC';
-    // if (isset($_GET['date']) && !empty($_GET['date'] != '')){
-    //     $date = $db->escapeString($fn->xss_clean($_GET['date']));
-    //     $where .= "AND o.order_date = '$date' ";  
-    // }
+    if (isset($_GET['date']) && !empty($_GET['date'] != '')){
+        $date = $db->escapeString($fn->xss_clean($_GET['date']));
+        $where .= "AND DATE(opd.datetime) = '$date' ";  
+    }
     // if (isset($_GET['year']) && !empty($_GET['year'] != '')){
     //     $year = $db->escapeString($fn->xss_clean($_GET['year']));
     //     $where .= "AND YEAR(o.order_date) = '$year' ";  
@@ -240,6 +236,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'opd_networks') {
         // $operate = '<a class="btn-xs btn-danger" href="delete-booking.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
+        $tempRow['datetime'] = $row['datetime'];
         $tempRow['clinic_name'] = $row['clinic_name'];
         $tempRow['mobile'] = $row['mobile'];
         $tempRow['email'] = $row['email'];
@@ -258,10 +255,10 @@ if (isset($_GET['table']) && $_GET['table'] == 'lab_networks') {
     $where = '';
     $sort = 'id';
     $order = 'DESC';
-    // if (isset($_GET['date']) && !empty($_GET['date'] != '')){
-    //     $date = $db->escapeString($fn->xss_clean($_GET['date']));
-    //     $where .= "AND o.order_date = '$date' ";  
-    // }
+    if (isset($_GET['date']) && !empty($_GET['date'] != '')){
+        $date = $db->escapeString($fn->xss_clean($_GET['date']));
+        $where .= "AND DATE(l.datetime) = '$date' ";  
+    }
     // if (isset($_GET['year']) && !empty($_GET['year'] != '')){
     //     $year = $db->escapeString($fn->xss_clean($_GET['year']));
     //     $where .= "AND YEAR(o.order_date) = '$year' ";  
@@ -319,6 +316,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'lab_networks') {
         // $operate = '<a class="btn-xs btn-danger" href="delete-booking.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
+        $tempRow['datetime'] = $row['datetime'];
         $tempRow['center_name'] = $row['center_name'];
         $tempRow['mobile'] = $row['mobile'];
         $tempRow['email'] = $row['email'];
@@ -347,10 +345,10 @@ if (isset($_GET['table']) && $_GET['table'] == 'pharmacy_networks') {
     $where = '';
     $sort = 'id';
     $order = 'DESC';
-    // if (isset($_GET['date']) && !empty($_GET['date'] != '')){
-    //     $date = $db->escapeString($fn->xss_clean($_GET['date']));
-    //     $where .= "AND o.order_date = '$date' ";  
-    // }
+    if (isset($_GET['date']) && !empty($_GET['date'] != '')){
+        $date = $db->escapeString($fn->xss_clean($_GET['date']));
+        $where .= "AND DATE(opd.datetime)= '$date' ";  
+    }
     // if (isset($_GET['year']) && !empty($_GET['year'] != '')){
     //     $year = $db->escapeString($fn->xss_clean($_GET['year']));
     //     $where .= "AND YEAR(o.order_date) = '$year' ";  
@@ -408,6 +406,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'pharmacy_networks') {
         // $operate = '<a class="btn-xs btn-danger" href="delete-booking.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
+        $tempRow['datetime'] = $row['datetime'];
         $tempRow['shop_name'] = $row['shop_name'];
         $tempRow['mobile'] = $row['mobile'];
         $tempRow['email'] = $row['email'];
@@ -427,10 +426,10 @@ if (isset($_GET['table']) && $_GET['table'] == 'dental_networks') {
     $where = '';
     $sort = 'id';
     $order = 'DESC';
-    // if (isset($_GET['date']) && !empty($_GET['date'] != '')){
-    //     $date = $db->escapeString($fn->xss_clean($_GET['date']));
-    //     $where .= "AND o.order_date = '$date' ";  
-    // }
+    if (isset($_GET['date']) && !empty($_GET['date'] != '')){
+        $date = $db->escapeString($fn->xss_clean($_GET['date']));
+        $where .= "AND DATE(d.datetime)= '$date' ";  
+    }
     // if (isset($_GET['year']) && !empty($_GET['year'] != '')){
     //     $year = $db->escapeString($fn->xss_clean($_GET['year']));
     //     $where .= "AND YEAR(o.order_date) = '$year' ";  
@@ -488,6 +487,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'dental_networks') {
         // $operate = '<a class="btn-xs btn-danger" href="delete-booking.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
+        $tempRow['datetime'] = $row['datetime'];
         $tempRow['clinic_name'] = $row['clinic_name'];
         $tempRow['mobile'] = $row['mobile'];
         $tempRow['email'] = $row['email'];
