@@ -1,6 +1,6 @@
 <section class="content-header">
     <h1>
-        OPD Networks /
+        LAB Networks /
         <small><a href="home.php"><i class="fa fa-home"></i> Home</a></small>
     </h1>
     <!-- <ol class="breadcrumb">
@@ -18,20 +18,23 @@
 
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">
-                        <table id='users_table' class="table table-hover" data-toggle="table" data-url="api-firebase/get-bootstrap-table-data.php?table=opd_networks" data-page-list="[5, 10, 20, 50, 100, 200]" data-show-refresh="true" data-show-columns="true" data-side-pagination="server" data-pagination="true" data-search="true" data-trim-on-search="false" data-filter-control="true" data-query-params="queryParams" data-sort-name="id" data-sort-order="desc"  data-export-options='{
-                            "fileName": "opd_networks-list-<?= date('d-m-Y') ?>",
+                        <table id='users_table' class="table table-hover" data-toggle="table" data-url="api-firebase/get-bootstrap-table-data.php?table=lab_networks" data-page-list="[5, 10, 20, 50, 100, 200]" data-show-refresh="true" data-show-columns="true" data-side-pagination="server" data-pagination="true" data-search="true" data-trim-on-search="false" data-filter-control="true" data-query-params="queryParams" data-sort-name="id" data-sort-order="desc"  data-export-options='{
+                            "fileName": "lab_networks-list-<?= date('d-m-Y') ?>",
                             "ignoreColumn": ["operate"] 
                         }'>
                             <thead>
                                 <tr>
                                     <th data-field="id" data-sortable="true">ID</th>
-                                    <th data-field="name">User Name</th>
-                                    <th data-field="clinic_name" data-sortable="true">Cinic/Hospital Name</th>
-                                    <th data-field="address" data-sortable="true">Address</th>
+                                    <th data-field="name" data-sortable="false">User Name</th>
+                                    <th data-field="center_name" data-sortable="true">Center Name</th>
                                     <th data-field="email" data-sortable="true">Email</th>
                                     <th data-field="mobile" data-sortable="true">Mobile Number</th>
+                                    <th data-field="manager_name" data-sortable="true"> Manager Name</th>
+                                    <th data-field="center_address" data-sortable="true"> Center Address</th>
+                                    <th data-field="operational_hours" data-sortable="true">Operational Hours</th>
                                     <th data-field="latitude" data-sortable="true">Latitude</th>
                                     <th data-field="longitude" data-sortable="true">Longitude</th>
+                                    <th data-field="image">Image</th>
                                     <!-- <th data-field="operate">Action</th> -->
                     
                     

@@ -15,7 +15,7 @@ $fn = new custom_functions;
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- <link rel="icon" type="image/ico" href="../../dist/img/favicon.jpeg"> -->
+    <link rel="icon" type="image/ico" href="dist/img/favicon.jpeg">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -111,7 +111,7 @@ $fn = new custom_functions;
             <a href="home.php" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">
-                  
+                  <img src="dist/img/logo.jpeg" alt="" height=30 style="border-radius:15px;">
                 </span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg">
@@ -177,6 +177,24 @@ $fn = new custom_functions;
                     <a href="opd_networks.php">
                         <i class="fa fa-building"></i>
                         <span>OPD Networks</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="lab_networks.php">
+                        <i class="fa fa-home"></i>
+                        <span>Lab Networks</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="pharmacy_networks.php">
+                        <i class="fa fa-building"></i>
+                        <span>Pharmacy Networks</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="dental_networks.php">
+                        <i class="fa fa-building"></i>
+                        <span>Dental Provider Networks</span>
                     </a>
                 </li>
                 
