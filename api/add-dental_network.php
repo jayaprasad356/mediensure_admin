@@ -6,6 +6,7 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
+date_default_timezone_set('Asia/Kolkata');
 
 
 include_once('../includes/crud.php');
@@ -63,20 +64,22 @@ $email = $db->escapeString($_POST['email']);
 $address = $db->escapeString($_POST['address']);
 $latitude = $db->escapeString($_POST['latitude']);
 $longitude = $db->escapeString($_POST['longitude']);
+$datetime = date('Y-m-d H:i:s');
 
-$sql = "SELECT * FROM dental_networks WHERE clinic_name = '$clinic_name' AND mobile='$mobile'";
-$db->sql($sql);
-$res = $db->getResult();
-$num = $db->numRows($res);
-if ($num >= 1) {
-    $response['success'] = false;
-    $response['message'] ="Pharmacy Network Already Exists";
-    print_r(json_encode($response));
-    return false;
-}
-else{
+
+// $sql = "SELECT * FROM dental_networks WHERE clinic_name = '$clinic_name' AND mobile='$mobile'";
+// $db->sql($sql);
+// $res = $db->getResult();
+// $num = $db->numRows($res);
+// if ($num >= 1) {
+//     $response['success'] = false;
+//     $response['message'] ="Pharmacy Network Already Exists";
+//     print_r(json_encode($response));
+//     return false;
+// }
+// else{
   
-    $sql = "INSERT INTO dental_networks (`user_id`,`clinic_name`,`mobile`,`email`,`address`,`latitude`,`longitude`) VALUES ('$user_id','$clinic_name','$mobile','$email','$address','$latitude','$longitude')";
+    $sql = "INSERT INTO dental_networks (`user_id`,`clinic_name`,`mobile`,`email`,`address`,`latitude`,`longitude`,`datetime`) VALUES ('$user_id','$clinic_name','$mobile','$email','$address','$latitude','$longitude','$datetime')";
     $db->sql($sql);
     $sql = "SELECT * FROM dental_networks WHERE clinic_name = '$clinic_name' AND mobile='$mobile'";
     $db->sql($sql);
@@ -86,6 +89,6 @@ else{
     $response['data'] = $res;
     print_r(json_encode($response));
 
-}
+// }
 
 ?>

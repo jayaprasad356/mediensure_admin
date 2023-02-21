@@ -6,7 +6,7 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
-
+date_default_timezone_set('Asia/Kolkata');
 
 include_once('../includes/crud.php');
 $db = new Database();
@@ -62,20 +62,20 @@ $email = $db->escapeString($_POST['email']);
 $address = $db->escapeString($_POST['address']);
 $latitude = $db->escapeString($_POST['latitude']);
 $longitude = $db->escapeString($_POST['longitude']);
+$datetime=date('Y-m-d H:i:s');
+// $sql = "SELECT * FROM opd_networks WHERE mobile = '$mobile' AND name='$name'";
+// $db->sql($sql);
+// $res = $db->getResult();
+// $num = $db->numRows($res);
+// if ($num >= 1) {
+//     $response['success'] = false;
+//     $response['message'] ="Clinic Or Hospital Already Exists";
+//     print_r(json_encode($response));
+//     return false;
+// }
+// else{
 
-$sql = "SELECT * FROM opd_networks WHERE mobile = '$mobile' AND name='$name'";
-$db->sql($sql);
-$res = $db->getResult();
-$num = $db->numRows($res);
-if ($num >= 1) {
-    $response['success'] = false;
-    $response['message'] ="Clinic Or Hospital Already Exists";
-    print_r(json_encode($response));
-    return false;
-}
-else{
-
-    $sql = "INSERT INTO opd_networks (`user_id`,`name`,`mobile`,`email`,`address`,`latitude`,`longitude`) VALUES ('$user_id','$name','$mobile','$email','$address','$latitude','$longitude')";
+    $sql = "INSERT INTO opd_networks (`user_id`,`name`,`mobile`,`email`,`address`,`latitude`,`longitude`,`datetime`) VALUES ('$user_id','$name','$mobile','$email','$address','$latitude','$longitude','$datetime')";
     $db->sql($sql);
     $sql = "SELECT * FROM opd_networks WHERE mobile = '$mobile' AND name='$name'";
     $db->sql($sql);
@@ -85,6 +85,6 @@ else{
     $response['data'] = $res;
     print_r(json_encode($response));
 
-}
+// }
 
 ?>

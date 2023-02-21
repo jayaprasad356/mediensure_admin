@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2023 at 05:18 AM
+-- Generation Time: Feb 21, 2023 at 07:20 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -54,15 +54,16 @@ CREATE TABLE `dental_networks` (
   `mobile` text DEFAULT NULL,
   `address` text DEFAULT NULL,
   `latitude` text DEFAULT NULL,
-  `longitude` text DEFAULT NULL
+  `longitude` text DEFAULT NULL,
+  `datetime` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `dental_networks`
 --
 
-INSERT INTO `dental_networks` (`id`, `user_id`, `clinic_name`, `email`, `mobile`, `address`, `latitude`, `longitude`) VALUES
-(1, 1, 'Sanjay Dental Clinic', 'sanjaydentals@gmail.com', '8743210912', 'Thirunelveli', '78.23310', '10.98664');
+INSERT INTO `dental_networks` (`id`, `user_id`, `clinic_name`, `email`, `mobile`, `address`, `latitude`, `longitude`, `datetime`) VALUES
+(1, 1, 'Sella Dental Clinic', 'sellandentals56@gmail.com', '6532883012', 'Coimbatore', '70.64671', '14.00393', '2023-02-21 11:20:47');
 
 -- --------------------------------------------------------
 
@@ -81,15 +82,16 @@ CREATE TABLE `lab_networks` (
   `operational_hours` text DEFAULT NULL,
   `latitude` float DEFAULT NULL,
   `longitude` text DEFAULT NULL,
-  `image` text DEFAULT NULL
+  `image` text DEFAULT NULL,
+  `datetime` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `lab_networks`
 --
 
-INSERT INTO `lab_networks` (`id`, `user_id`, `center_name`, `email`, `mobile`, `manager_name`, `center_address`, `operational_hours`, `latitude`, `longitude`, `image`) VALUES
-(1, 1, 'Renuga Lab\'s', 'labrenuga43@gmail.com', '765410921', 'Sri Yogesh', 'Seppakam', '9:00 - 5:00', 65.9902, '14.2344', '1676876437.8199.png');
+INSERT INTO `lab_networks` (`id`, `user_id`, `center_name`, `email`, `mobile`, `manager_name`, `center_address`, `operational_hours`, `latitude`, `longitude`, `image`, `datetime`) VALUES
+(1, 1, 'Renuga Lab\'s', 'labrenuga43@gmail.com', '765410921', 'Sri Yogesh', 'Seppakam', '9:00 - 5:00', 65.9902, '14.2344', '1676958418.7172.png', '2023-02-21 11:16:58');
 
 -- --------------------------------------------------------
 
@@ -105,15 +107,16 @@ CREATE TABLE `opd_networks` (
   `email` varchar(255) DEFAULT NULL,
   `mobile` text DEFAULT NULL,
   `latitude` text DEFAULT NULL,
-  `longitude` text DEFAULT NULL
+  `longitude` text DEFAULT NULL,
+  `datetime` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `opd_networks`
 --
 
-INSERT INTO `opd_networks` (`id`, `user_id`, `name`, `address`, `email`, `mobile`, `latitude`, `longitude`) VALUES
-(1, 1, 'Vengat Clinic', 'Tambaram,Chennai', 'vengatclinic45@gmail.com', '9076123043', '74.9012', '10.2335');
+INSERT INTO `opd_networks` (`id`, `user_id`, `name`, `address`, `email`, `mobile`, `latitude`, `longitude`, `datetime`) VALUES
+(1, 1, 'Vengat Clinic', 'Tambaram,Chennai', 'vengatclinic45@gmail.com', '9076123043', '74.90123', '10.23347', '2023-02-21 11:14:30');
 
 -- --------------------------------------------------------
 
@@ -129,15 +132,16 @@ CREATE TABLE `pharmacy_networks` (
   `email` text DEFAULT NULL,
   `mobile` text DEFAULT NULL,
   `latitude` text DEFAULT NULL,
-  `longitude` text DEFAULT NULL
+  `longitude` text DEFAULT NULL,
+  `datetime` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pharmacy_networks`
 --
 
-INSERT INTO `pharmacy_networks` (`id`, `user_id`, `shop_name`, `address`, `email`, `mobile`, `latitude`, `longitude`) VALUES
-(1, 1, 'Lalli Pharmacy', 'Chennai', 'lallispharm@gmail.com', '9787012346', '74.09123', '14.29301');
+INSERT INTO `pharmacy_networks` (`id`, `user_id`, `shop_name`, `address`, `email`, `mobile`, `latitude`, `longitude`, `datetime`) VALUES
+(1, 1, 'Lalli Pharmacy', 'Trichy', 'lallispharm@gmail.com', '9787012346', '74.09123', '14.29301', '2023-02-21 11:18:05');
 
 -- --------------------------------------------------------
 
