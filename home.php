@@ -59,7 +59,7 @@ include "header.php";
                         <a href="users.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-xs-6">
+                <!-- <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-green">
                         <div class="inner">
                         <h3><?php
@@ -74,7 +74,7 @@ include "header.php";
                         <div class="icon"><i class="fa fa-bullseye"></i></div>
                         <a href="categories.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                </div>
+                </div> -->
                
             </div>
 
