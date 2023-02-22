@@ -3,9 +3,9 @@
         Users /
         <small><a href="home.php"><i class="fa fa-home"></i> Home</a></small>
     </h1>
-    <!-- <ol class="breadcrumb">
-            <a class="btn btn-block btn-default" href="add-category.php"><i class="fa fa-plus-square"></i> Add New Category</a>
-    </ol> -->
+    <ol class="breadcrumb">
+            <a class="btn btn-block btn-default" href="add-user.php"><i class="fa fa-plus-square"></i> Add New User</a>
+    </ol>
     
 </section>
     <!-- Main content -->
@@ -29,7 +29,7 @@
                                     <th data-field="name" data-sortable="true">Name</th>
                                     <th data-field="mobile" data-sortable="true">Mobile Number</th>
                                     <th data-field="email" data-sortable="true">Email Id</th>
-                                    <!-- <th data-field="operate">Action</th> -->
+                                    <th data-field="operate">Action</th>
                     
                     
                                 </tr>

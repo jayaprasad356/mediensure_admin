@@ -173,12 +173,12 @@ $fn = new custom_functions;
                         <span>Users</span>
                     </a>
                 </li>
-                <li class="treeview">
+                <!-- <li class="treeview">
                     <a href="categories.php">
                         <i class="fa fa-bullseye"></i>
                         <span>Categories</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="treeview">
                     <a href="opd_networks.php">
                         <i class="fa fa-building"></i>

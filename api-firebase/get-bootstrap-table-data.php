@@ -87,13 +87,13 @@ if (isset($_GET['table']) && $_GET['table'] == 'users') {
     foreach ($res as $row) {
 
         
-        // $operate = ' <a href="edit-user.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
-        // $operate .= ' <a class="btn-xs btn-danger" href="delete-user.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
+        $operate = ' <a href="edit-user.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
+        $operate .= ' <a class="btn-xs btn-danger" href="delete-user.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
         $tempRow['email'] = $row['email'];
         $tempRow['mobile'] = $row['mobile'];
-        // $tempRow['operate'] = $operate;
+        $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
     $bulkData['rows'] = $rows;
@@ -175,10 +175,10 @@ if (isset($_GET['table']) && $_GET['table'] == 'opd_networks') {
     $where = '';
     $sort = 'id';
     $order = 'DESC';
-    if (isset($_GET['date']) && !empty($_GET['date'] != '')){
-        $date = $db->escapeString($fn->xss_clean($_GET['date']));
-        $where .= "AND DATE(opd.datetime) = '$date' ";  
-    }
+    // if (isset($_GET['date']) && !empty($_GET['date'] != '')){
+    //     $date = $db->escapeString($fn->xss_clean($_GET['date']));
+    //     $where .= "AND DATE(opd.datetime) = '$date' ";  
+    // }
     // if (isset($_GET['year']) && !empty($_GET['year'] != '')){
     //     $year = $db->escapeString($fn->xss_clean($_GET['year']));
     //     $where .= "AND YEAR(o.order_date) = '$year' ";  
@@ -187,11 +187,11 @@ if (isset($_GET['table']) && $_GET['table'] == 'opd_networks') {
     //     $month = $db->escapeString($fn->xss_clean($_GET['month']));
     //     $where .= "AND MONTH(o.order_date) = '$month' ";  
     // }
-    // if ((isset($_GET['from_date']) && !empty($_GET['from_date'] != '')) && (isset($_GET['to_date']) && !empty($_GET['to_date'] != ''))){
-    //     $from_date = $db->escapeString($fn->xss_clean($_GET['from_date']));
-    //     $to_date = $db->escapeString($fn->xss_clean($_GET['to_date']));
-    //     $where .= "AND DATE(o.order_date)BETWEEN '$from_date' AND '$to_date'  ";  
-    // }
+    if ((isset($_GET['from_date']) && !empty($_GET['from_date'] != '')) && (isset($_GET['to_date']) && !empty($_GET['to_date'] != ''))){
+        $from_date = $db->escapeString($fn->xss_clean($_GET['from_date']));
+        $to_date = $db->escapeString($fn->xss_clean($_GET['to_date']));
+        $where .= "AND DATE(opd.datetime) BETWEEN '$from_date' AND '$to_date' ";  
+    }
     if (isset($_GET['offset']))
         $offset = $db->escapeString($fn->xss_clean($_GET['offset']));
     if (isset($_GET['limit']))
@@ -255,10 +255,10 @@ if (isset($_GET['table']) && $_GET['table'] == 'lab_networks') {
     $where = '';
     $sort = 'id';
     $order = 'DESC';
-    if (isset($_GET['date']) && !empty($_GET['date'] != '')){
-        $date = $db->escapeString($fn->xss_clean($_GET['date']));
-        $where .= "AND DATE(l.datetime) = '$date' ";  
-    }
+    // if (isset($_GET['date']) && !empty($_GET['date'] != '')){
+    //     $date = $db->escapeString($fn->xss_clean($_GET['date']));
+    //     $where .= "AND DATE(l.datetime) = '$date' ";  
+    // }
     // if (isset($_GET['year']) && !empty($_GET['year'] != '')){
     //     $year = $db->escapeString($fn->xss_clean($_GET['year']));
     //     $where .= "AND YEAR(o.order_date) = '$year' ";  
@@ -267,11 +267,11 @@ if (isset($_GET['table']) && $_GET['table'] == 'lab_networks') {
     //     $month = $db->escapeString($fn->xss_clean($_GET['month']));
     //     $where .= "AND MONTH(o.order_date) = '$month' ";  
     // }
-    // if ((isset($_GET['from_date']) && !empty($_GET['from_date'] != '')) && (isset($_GET['to_date']) && !empty($_GET['to_date'] != ''))){
-    //     $from_date = $db->escapeString($fn->xss_clean($_GET['from_date']));
-    //     $to_date = $db->escapeString($fn->xss_clean($_GET['to_date']));
-    //     $where .= "AND DATE(o.order_date)BETWEEN '$from_date' AND '$to_date'  ";  
-    // }
+    if ((isset($_GET['from_date']) && !empty($_GET['from_date'] != '')) && (isset($_GET['to_date']) && !empty($_GET['to_date'] != ''))){
+        $from_date = $db->escapeString($fn->xss_clean($_GET['from_date']));
+        $to_date = $db->escapeString($fn->xss_clean($_GET['to_date']));
+        $where .= "AND DATE(l.datetime) BETWEEN '$from_date' AND '$to_date' ";  
+    }
     if (isset($_GET['offset']))
         $offset = $db->escapeString($fn->xss_clean($_GET['offset']));
     if (isset($_GET['limit']))
@@ -345,10 +345,10 @@ if (isset($_GET['table']) && $_GET['table'] == 'pharmacy_networks') {
     $where = '';
     $sort = 'id';
     $order = 'DESC';
-    if (isset($_GET['date']) && !empty($_GET['date'] != '')){
-        $date = $db->escapeString($fn->xss_clean($_GET['date']));
-        $where .= "AND DATE(opd.datetime)= '$date' ";  
-    }
+    // if (isset($_GET['date']) && !empty($_GET['date'] != '')){
+    //     $date = $db->escapeString($fn->xss_clean($_GET['date']));
+    //     $where .= "AND DATE(opd.datetime)= '$date' ";  
+    // }
     // if (isset($_GET['year']) && !empty($_GET['year'] != '')){
     //     $year = $db->escapeString($fn->xss_clean($_GET['year']));
     //     $where .= "AND YEAR(o.order_date) = '$year' ";  
@@ -357,11 +357,11 @@ if (isset($_GET['table']) && $_GET['table'] == 'pharmacy_networks') {
     //     $month = $db->escapeString($fn->xss_clean($_GET['month']));
     //     $where .= "AND MONTH(o.order_date) = '$month' ";  
     // }
-    // if ((isset($_GET['from_date']) && !empty($_GET['from_date'] != '')) && (isset($_GET['to_date']) && !empty($_GET['to_date'] != ''))){
-    //     $from_date = $db->escapeString($fn->xss_clean($_GET['from_date']));
-    //     $to_date = $db->escapeString($fn->xss_clean($_GET['to_date']));
-    //     $where .= "AND DATE(o.order_date)BETWEEN '$from_date' AND '$to_date'  ";  
-    // }
+    if ((isset($_GET['from_date']) && !empty($_GET['from_date'] != '')) && (isset($_GET['to_date']) && !empty($_GET['to_date'] != ''))){
+        $from_date = $db->escapeString($fn->xss_clean($_GET['from_date']));
+        $to_date = $db->escapeString($fn->xss_clean($_GET['to_date']));
+        $where .= "AND DATE(opd.datetime) BETWEEN '$from_date' AND '$to_date' ";  
+    }
     if (isset($_GET['offset']))
         $offset = $db->escapeString($fn->xss_clean($_GET['offset']));
     if (isset($_GET['limit']))
@@ -426,10 +426,10 @@ if (isset($_GET['table']) && $_GET['table'] == 'dental_networks') {
     $where = '';
     $sort = 'id';
     $order = 'DESC';
-    if (isset($_GET['date']) && !empty($_GET['date'] != '')){
-        $date = $db->escapeString($fn->xss_clean($_GET['date']));
-        $where .= "AND DATE(d.datetime)= '$date' ";  
-    }
+    // if (isset($_GET['date']) && !empty($_GET['date'] != '')){
+    //     $date = $db->escapeString($fn->xss_clean($_GET['date']));
+    //     $where .= "AND DATE(d.datetime)= '$date' ";  
+    // }
     // if (isset($_GET['year']) && !empty($_GET['year'] != '')){
     //     $year = $db->escapeString($fn->xss_clean($_GET['year']));
     //     $where .= "AND YEAR(o.order_date) = '$year' ";  
@@ -438,11 +438,11 @@ if (isset($_GET['table']) && $_GET['table'] == 'dental_networks') {
     //     $month = $db->escapeString($fn->xss_clean($_GET['month']));
     //     $where .= "AND MONTH(o.order_date) = '$month' ";  
     // }
-    // if ((isset($_GET['from_date']) && !empty($_GET['from_date'] != '')) && (isset($_GET['to_date']) && !empty($_GET['to_date'] != ''))){
-    //     $from_date = $db->escapeString($fn->xss_clean($_GET['from_date']));
-    //     $to_date = $db->escapeString($fn->xss_clean($_GET['to_date']));
-    //     $where .= "AND DATE(o.order_date)BETWEEN '$from_date' AND '$to_date'  ";  
-    // }
+    if ((isset($_GET['from_date']) && !empty($_GET['from_date'] != '')) && (isset($_GET['to_date']) && !empty($_GET['to_date'] != ''))){
+        $from_date = $db->escapeString($fn->xss_clean($_GET['from_date']));
+        $to_date = $db->escapeString($fn->xss_clean($_GET['to_date']));
+        $where .= "AND DATE(d.datetime) BETWEEN '$from_date' AND '$to_date' ";  
+    }
     if (isset($_GET['offset']))
         $offset = $db->escapeString($fn->xss_clean($_GET['offset']));
     if (isset($_GET['limit']))

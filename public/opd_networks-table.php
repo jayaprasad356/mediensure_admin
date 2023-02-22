@@ -18,8 +18,12 @@
                         <div class="box-header">
                             <div class="row">
                                 <div class="form-group col-md-3">
-                                    <label for="">Filter by Date</label>
-                                    <input type="date" class="form-control" name="date" id="date" value="<?php echo date('Y-m-d') ?>">
+                                    <label for="">Filter by From Date</label>
+                                    <input type="date" class="form-control" name="from_date" id="from_date">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="">Filter by To Date</label>
+                                    <input type="date" class="form-control" name="to_date" id="to_date">
                                 </div>
                             </div>
                          </div>
@@ -57,8 +61,12 @@
         <!-- /.row (main row) -->
     </section>
 <script>
-    $('#date').on('change', function() {
-        id = $('#date').val();
+    $('#from_date').on('change', function() {
+        id = $('#from_date').val();
+        $('#users_table').bootstrapTable('refresh');
+    });
+    $('#to_date').on('change', function() {
+        id = $('#to_date').val();
         $('#users_table').bootstrapTable('refresh');
     });
     // $('#community').on('change', function() {
@@ -67,7 +75,8 @@
 
     function queryParams(p) {
         return {
-            "date": $('#date').val(),
+            "from_date": $('#from_date').val(),
+            "to_date": $('#to_date').val(),
             limit: p.limit,
             sort: p.sort,
             order: p.order,
