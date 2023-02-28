@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2023 at 02:53 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Feb 28, 2023 at 06:55 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `image` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `categories`
@@ -56,7 +56,7 @@ CREATE TABLE `dental_networks` (
   `latitude` text DEFAULT NULL,
   `longitude` text DEFAULT NULL,
   `datetime` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `dental_networks`
@@ -84,7 +84,7 @@ CREATE TABLE `lab_networks` (
   `longitude` text DEFAULT NULL,
   `image` text DEFAULT NULL,
   `datetime` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `lab_networks`
@@ -109,7 +109,7 @@ CREATE TABLE `opd_networks` (
   `latitude` text DEFAULT NULL,
   `longitude` text DEFAULT NULL,
   `datetime` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `opd_networks`
@@ -134,7 +134,7 @@ CREATE TABLE `pharmacy_networks` (
   `latitude` text DEFAULT NULL,
   `longitude` text DEFAULT NULL,
   `datetime` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pharmacy_networks`
@@ -142,6 +142,34 @@ CREATE TABLE `pharmacy_networks` (
 
 INSERT INTO `pharmacy_networks` (`id`, `user_id`, `shop_name`, `address`, `email`, `mobile`, `latitude`, `longitude`, `datetime`) VALUES
 (1, 1, 'Lalli Pharmacy', 'Trichy', 'lallispharm@gmail.com', '9787012346', '74.09123', '14.29301', '2023-02-20 11:18:05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `radiology_networks`
+--
+
+CREATE TABLE `radiology_networks` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `center_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `mobile` text DEFAULT NULL,
+  `manager_name` varchar(255) DEFAULT NULL,
+  `center_address` text DEFAULT NULL,
+  `operational_hours` text DEFAULT NULL,
+  `latitude` float DEFAULT NULL,
+  `longitude` text DEFAULT NULL,
+  `image` text DEFAULT NULL,
+  `datetime` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `radiology_networks`
+--
+
+INSERT INTO `radiology_networks` (`id`, `user_id`, `center_name`, `email`, `mobile`, `manager_name`, `center_address`, `operational_hours`, `latitude`, `longitude`, `image`, `datetime`) VALUES
+(1, 1, 'Vengatash Radilogy Services', 'vengatash7884@gmail.com', '7489099321', 'Jeya', 'Cudalore', '9:00 - 5:00', 74.8744, '14.23123', '1677563677.3806.jpg', '2023-02-28 11:24:37');
 
 -- --------------------------------------------------------
 
@@ -154,7 +182,7 @@ CREATE TABLE `users` (
   `name` varchar(255) DEFAULT NULL,
   `mobile` text DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -198,6 +226,12 @@ ALTER TABLE `pharmacy_networks`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `radiology_networks`
+--
+ALTER TABLE `radiology_networks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -235,6 +269,12 @@ ALTER TABLE `opd_networks`
 -- AUTO_INCREMENT for table `pharmacy_networks`
 --
 ALTER TABLE `pharmacy_networks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `radiology_networks`
+--
+ALTER TABLE `radiology_networks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
