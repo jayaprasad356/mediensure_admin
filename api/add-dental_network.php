@@ -26,6 +26,12 @@ if (empty($_POST['clinic_name'])) {
     print_r(json_encode($response));
     return false;
 }
+if (empty($_POST['oral_xray'])) {
+    $response['success'] = false;
+    $response['message'] = "Oral Xray is Empty";
+    print_r(json_encode($response));
+    return false;
+}
 if (empty($_POST['mobile'])) {
     $response['success'] = false;
     $response['message'] = "Mobilenumber is Empty";
@@ -61,6 +67,7 @@ $user_id = $db->escapeString($_POST['user_id']);
 $clinic_name = $db->escapeString($_POST['clinic_name']);
 $mobile = $db->escapeString($_POST['mobile']);
 $email = $db->escapeString($_POST['email']);
+$oral_xray = $db->escapeString($_POST['oral_xray']);
 $address = $db->escapeString($_POST['address']);
 $latitude = $db->escapeString($_POST['latitude']);
 $longitude = $db->escapeString($_POST['longitude']);
@@ -79,7 +86,7 @@ $datetime = date('Y-m-d H:i:s');
 // }
 // else{
   
-    $sql = "INSERT INTO dental_networks (`user_id`,`clinic_name`,`mobile`,`email`,`address`,`latitude`,`longitude`,`datetime`) VALUES ('$user_id','$clinic_name','$mobile','$email','$address','$latitude','$longitude','$datetime')";
+    $sql = "INSERT INTO dental_networks (`user_id`,`clinic_name`,`oral_xray`,`mobile`,`email`,`address`,`latitude`,`longitude`,`datetime`) VALUES ('$user_id','$clinic_name','$oral_xray','$mobile','$email','$address','$latitude','$longitude','$datetime')";
     $db->sql($sql);
     $sql = "SELECT * FROM dental_networks WHERE clinic_name = '$clinic_name' AND mobile='$mobile'";
     $db->sql($sql);

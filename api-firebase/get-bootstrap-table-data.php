@@ -284,7 +284,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'lab_networks') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($fn->xss_clean($_GET['search']));
-        $where .= "AND u.name like '%" . $search . "%' OR l.mobile like '%" . $search . "%' OR l.center_name like '%" . $search . "%' OR l.center_address like '%" . $search . "%' OR l.manager_name like '%" . $search . "%' OR l.operational_hours like '%" . $search . "%' ";
+        $where .= "AND u.name like '%" . $search . "%' OR l.mobile like '%" . $search . "%' OR l.center_name like '%" . $search . "%' OR l.center_address like '%" . $search . "%' OR l.manager_name like '%" . $search . "%' OR l.operational_hours like '%" . $search . "%' OR l.radiology_test like '%" . $search . "%' OR l.home_visit like '%" . $search . "%' ";
     }
     if (isset($_GET['sort'])) {
         $sort = $db->escapeString($_GET['sort']);
@@ -323,6 +323,8 @@ if (isset($_GET['table']) && $_GET['table'] == 'lab_networks') {
         $tempRow['manager_name'] = $row['manager_name'];
         $tempRow['center_address'] = $row['center_address'];
         $tempRow['operational_hours'] = $row['operational_hours'];
+        $tempRow['radiology_test'] = $row['radiology_test'];
+        $tempRow['home_visit'] = $row['home_visit'];
         $tempRow['latitude'] = $row['latitude'];
         $tempRow['longitude'] = $row['longitude'];
         if(!empty($row['image'])){
@@ -455,7 +457,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'dental_networks') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($fn->xss_clean($_GET['search']));
-        $where .= "AND u.name like '%" . $search . "%' OR d.mobile like '%" . $search . "%' OR d.clinic_name like '%" . $search . "%'  OR d.address like '%" . $search . "%' ";
+        $where .= "AND u.name like '%" . $search . "%' OR d.mobile like '%" . $search . "%' OR d.clinic_name like '%" . $search . "%' OR d.address like '%" . $search . "%' OR d.oral_xray like '%" . $search . "%' ";
     }
     if (isset($_GET['sort'])) {
         $sort = $db->escapeString($_GET['sort']);
@@ -489,6 +491,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'dental_networks') {
         $tempRow['name'] = $row['name'];
         $tempRow['datetime'] = $row['datetime'];
         $tempRow['clinic_name'] = $row['clinic_name'];
+        $tempRow['oral_xray'] = $row['oral_xray'];
         $tempRow['mobile'] = $row['mobile'];
         $tempRow['email'] = $row['email'];
         $tempRow['address'] = $row['address'];

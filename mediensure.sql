@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2023 at 06:55 AM
+-- Generation Time: Feb 28, 2023 at 12:12 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -53,6 +53,7 @@ CREATE TABLE `dental_networks` (
   `email` varchar(255) DEFAULT NULL,
   `mobile` text DEFAULT NULL,
   `address` text DEFAULT NULL,
+  `oral_xray` text DEFAULT NULL,
   `latitude` text DEFAULT NULL,
   `longitude` text DEFAULT NULL,
   `datetime` text DEFAULT NULL
@@ -62,8 +63,8 @@ CREATE TABLE `dental_networks` (
 -- Dumping data for table `dental_networks`
 --
 
-INSERT INTO `dental_networks` (`id`, `user_id`, `clinic_name`, `email`, `mobile`, `address`, `latitude`, `longitude`, `datetime`) VALUES
-(1, 1, 'Sella Dental Clinic', 'sellandentals56@gmail.com', '6532883012', 'Coimbatore', '70.64671', '14.00393', '2023-02-21 11:20:47');
+INSERT INTO `dental_networks` (`id`, `user_id`, `clinic_name`, `email`, `mobile`, `address`, `oral_xray`, `latitude`, `longitude`, `datetime`) VALUES
+(1, 1, 'Sella Dental Clinic', 'sellandentals56@gmail.com', '6532883012', 'Coimbatore', 'yes', '70.64671', '14.00393', '2023-02-21 11:20:47');
 
 -- --------------------------------------------------------
 
@@ -80,6 +81,8 @@ CREATE TABLE `lab_networks` (
   `manager_name` varchar(255) DEFAULT NULL,
   `center_address` text DEFAULT NULL,
   `operational_hours` text DEFAULT NULL,
+  `radiology_test` text DEFAULT NULL,
+  `home_visit` text DEFAULT NULL,
   `latitude` float DEFAULT NULL,
   `longitude` text DEFAULT NULL,
   `image` text DEFAULT NULL,
@@ -90,8 +93,8 @@ CREATE TABLE `lab_networks` (
 -- Dumping data for table `lab_networks`
 --
 
-INSERT INTO `lab_networks` (`id`, `user_id`, `center_name`, `email`, `mobile`, `manager_name`, `center_address`, `operational_hours`, `latitude`, `longitude`, `image`, `datetime`) VALUES
-(1, 1, 'Renuga Lab\'s', 'labrenuga43@gmail.com', '765410921', 'Sri Yogesh', 'Seppakam', '9:00 - 5:00', 65.9902, '14.2344', '1676958418.7172.png', '2023-02-21 11:16:58');
+INSERT INTO `lab_networks` (`id`, `user_id`, `center_name`, `email`, `mobile`, `manager_name`, `center_address`, `operational_hours`, `radiology_test`, `home_visit`, `latitude`, `longitude`, `image`, `datetime`) VALUES
+(1, 1, 'Renuga Lab\'s', 'labrenuga43@gmail.com', '765410921', 'Sri Yogesh', 'Seppakam', '9:00 - 5:00', 'Available', 'Yes', 65.9902, '14.2344', '1676958418.7172.png', '2023-02-21 11:16:58');
 
 -- --------------------------------------------------------
 

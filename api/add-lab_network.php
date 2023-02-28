@@ -58,6 +58,18 @@ if (empty($_POST['operational_hours'])) {
     print_r(json_encode($response));
     return false;
 }
+if (empty($_POST['radiology_test'])) {
+    $response['success'] = false;
+    $response['message'] = "Radiology Test is Empty";
+    print_r(json_encode($response));
+    return false;
+}
+if (empty($_POST['home_visit'])) {
+    $response['success'] = false;
+    $response['message'] = "Home Visit is Empty";
+    print_r(json_encode($response));
+    return false;
+}
 if (empty($_POST['latitude'])) {
     $response['success'] = false;
     $response['message'] = "Latitude is Empty";
@@ -78,6 +90,8 @@ $email = $db->escapeString($_POST['email']);
 $manager_name = $db->escapeString($_POST['manager_name']);
 $center_address = $db->escapeString($_POST['center_address']);
 $operational_hours = $db->escapeString($_POST['operational_hours']);
+$radiology_test = $db->escapeString($_POST['radiology_test']);
+$home_visit = $db->escapeString($_POST['home_visit']);
 $latitude = $db->escapeString($_POST['latitude']);
 $longitude = $db->escapeString($_POST['longitude']);
 $datetime=date('Y-m-d H:i:s');
@@ -116,7 +130,7 @@ $datetime=date('Y-m-d H:i:s');
         }
     }
 
-    $sql = "INSERT INTO lab_networks (`user_id`,`center_name`,`mobile`,`email`,`manager_name`,`center_address`,`operational_hours`,`latitude`,`longitude`,`image`,`datetime`) VALUES ('$user_id','$center_name','$mobile','$email','$manager_name','$center_address','$operational_hours','$latitude','$longitude','$filename','$datetime')";
+    $sql = "INSERT INTO lab_networks (`user_id`,`center_name`,`mobile`,`email`,`manager_name`,`center_address`,`operational_hours`,`radiology_test`,`home_visit`,`latitude`,`longitude`,`image`,`datetime`) VALUES ('$user_id','$center_name','$mobile','$email','$manager_name','$center_address','$operational_hours','$radiology_test','$home_visit','$latitude','$longitude','$filename','$datetime')";
     $db->sql($sql);
     $sql = "SELECT * FROM lab_networks WHERE center_name = '$center_name' AND email='$email'";
     $db->sql($sql);

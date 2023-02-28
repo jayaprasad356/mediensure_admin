@@ -49,6 +49,8 @@
                                             <th data-field="manager_name" data-sortable="true"> Manager Name</th>
                                             <th data-field="center_address" data-sortable="true"> Center Address</th>
                                             <th data-field="operational_hours" data-sortable="true">Operational Hours</th>
+                                            <th data-field="radiology_test" data-sortable="true">Radiology Test</th>
+                                            <th data-field="home_visit" data-sortable="true">Home Visit</th>
                                             <th data-field="latitude" data-sortable="true">Latitude</th>
                                             <th data-field="longitude" data-sortable="true">Longitude</th>
                                             <th data-field="image">Image</th>
