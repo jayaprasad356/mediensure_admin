@@ -500,4 +500,96 @@ if (isset($_GET['table']) && $_GET['table'] == 'dental_networks') {
     $bulkData['rows'] = $rows;
     print_r(json_encode($bulkData));
 }
+
+//radiology netwoks table goes here
+if (isset($_GET['table']) && $_GET['table'] == 'radiology_networks') {
+    $offset = 0;
+    $limit = 10;
+    $where = '';
+    $sort = 'id';
+    $order = 'DESC';
+    // if (isset($_GET['date']) && !empty($_GET['date'] != '')){
+    //     $date = $db->escapeString($fn->xss_clean($_GET['date']));
+    //     $where .= "AND DATE(l.datetime) = '$date' ";  
+    // }
+    // if (isset($_GET['year']) && !empty($_GET['year'] != '')){
+    //     $year = $db->escapeString($fn->xss_clean($_GET['year']));
+    //     $where .= "AND YEAR(o.order_date) = '$year' ";  
+    // }
+    // if (isset($_GET['month']) && !empty($_GET['month'] != '')){
+    //     $month = $db->escapeString($fn->xss_clean($_GET['month']));
+    //     $where .= "AND MONTH(o.order_date) = '$month' ";  
+    // }
+    if ((isset($_GET['from_date']) && !empty($_GET['from_date'] != '')) && (isset($_GET['to_date']) && !empty($_GET['to_date'] != ''))){
+        $from_date = $db->escapeString($fn->xss_clean($_GET['from_date']));
+        $to_date = $db->escapeString($fn->xss_clean($_GET['to_date']));
+        $where .= "AND DATE(r.datetime) BETWEEN '$from_date' AND '$to_date' ";  
+    }
+    if (isset($_GET['offset']))
+        $offset = $db->escapeString($fn->xss_clean($_GET['offset']));
+    if (isset($_GET['limit']))
+        $limit = $db->escapeString($fn->xss_clean($_GET['limit']));
+
+    if (isset($_GET['sort']))
+        $sort = $db->escapeString($fn->xss_clean($_GET['sort']));
+    if (isset($_GET['order']))
+        $order = $db->escapeString($fn->xss_clean($_GET['order']));
+
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $db->escapeString($fn->xss_clean($_GET['search']));
+        $where .= "AND u.name like '%" . $search . "%' OR r.mobile like '%" . $search . "%' OR r.center_name like '%" . $search . "%' OR r.center_address like '%" . $search . "%' OR r.manager_name like '%" . $search . "%' OR r.operational_hours like '%" . $search . "%' ";
+    }
+    if (isset($_GET['sort'])) {
+        $sort = $db->escapeString($_GET['sort']);
+    }
+    if (isset($_GET['order'])) {
+        $order = $db->escapeString($_GET['order']);
+    }
+    $join = "LEFT JOIN `users` u ON r.user_id = u.id WHERE r.id IS NOT NULL ";
+
+    $sql = "SELECT COUNT(r.id) as total FROM `radiology_networks` r $join " . $where . "";
+    $db->sql($sql);
+    $res = $db->getResult();
+    foreach ($res as $row)
+        $total = $row['total'];
+        
+    $sql = "SELECT r.id AS id,r.*,u.name AS name,r.mobile AS mobile,r.email AS email FROM `radiology_networks` r $join 
+        $where ORDER BY $sort $order LIMIT $offset, $limit";
+     $db->sql($sql);
+    $res = $db->getResult();
+
+    $bulkData = array();
+    $bulkData['total'] = $total;
+
+    $rows = array();
+    $tempRow = array();
+    foreach ($res as $row) {
+        
+        // $operate = '<a href="view-order.php?id=' . $row['id'] . '" class="label label-primary" title="View">View</a>';
+        // $operate = '<a class="btn-xs btn-danger" href="delete-booking.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
+        $tempRow['id'] = $row['id'];
+        $tempRow['name'] = $row['name'];
+        $tempRow['datetime'] = $row['datetime'];
+        $tempRow['center_name'] = $row['center_name'];
+        $tempRow['mobile'] = $row['mobile'];
+        $tempRow['email'] = $row['email'];
+        $tempRow['manager_name'] = $row['manager_name'];
+        $tempRow['center_address'] = $row['center_address'];
+        $tempRow['operational_hours'] = $row['operational_hours'];
+        $tempRow['latitude'] = $row['latitude'];
+        $tempRow['longitude'] = $row['longitude'];
+        if(!empty($row['image'])){
+            $tempRow['image'] = "<a data-lightbox='category' href='" . $row['image'] . "' data-caption='" . $row['name'] . "'><img src='upload/images/" . $row['image'] . "' title='" . $row['name'] . "' height='70' /></a>";
+
+        }else{
+            $tempRow['image'] = 'No Image';
+
+        }
+        //  $tempRow['operate'] = $operate;
+        $rows[] = $tempRow;
+    }
+    $bulkData['rows'] = $rows;
+    print_r(json_encode($bulkData));
+}
+
 $db->disconnect();
