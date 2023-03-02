@@ -204,7 +204,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'opd_networks') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($fn->xss_clean($_GET['search']));
-        $where .= "AND u.name like '%" . $search . "%' OR opd.mobile like '%" . $search . "%' OR opd.name like '%" . $search . "%'  OR opd.address like '%" . $search . "%' ";
+        $where .= "AND u.name like '%" . $search . "%' OR opd.mobile like '%" . $search . "%' OR opd.name like '%" . $search . "%'  OR opd.address like '%" . $search . "%' OR opd.remarks like '%" . $search . "%' ";
     }
     if (isset($_GET['sort'])) {
         $sort = $db->escapeString($_GET['sort']);
@@ -232,8 +232,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'opd_networks') {
     $tempRow = array();
     foreach ($res as $row) {
         
-        // $operate = '<a href="view-order.php?id=' . $row['id'] . '" class="label label-primary" title="View">View</a>';
-        // $operate = '<a class="btn-xs btn-danger" href="delete-booking.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
+        $operate = ' <a href="edit-opd_network.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
         $tempRow['datetime'] = $row['datetime'];
@@ -243,7 +242,14 @@ if (isset($_GET['table']) && $_GET['table'] == 'opd_networks') {
         $tempRow['address'] = $row['address'];
         $tempRow['latitude'] = $row['latitude'];
         $tempRow['longitude'] = $row['longitude'];
-        //  $tempRow['operate'] = $operate;
+        $tempRow['remarks'] = $row['remarks'];
+        if($row['status'] == 1)
+            $tempRow['status'] = "<p class='text text-success'> Verified</p>";
+        elseif($row['status'] == 2)
+            $tempRow['status'] = "<p class='text text-danger'>Rejected</p>";
+        else
+            $tempRow['status'] = "<p class='text text-warning'>Pending</p>";
+         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
     $bulkData['rows'] = $rows;
@@ -284,7 +290,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'lab_networks') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($fn->xss_clean($_GET['search']));
-        $where .= "AND u.name like '%" . $search . "%' OR l.mobile like '%" . $search . "%' OR l.center_name like '%" . $search . "%' OR l.center_address like '%" . $search . "%' OR l.manager_name like '%" . $search . "%' OR l.operational_hours like '%" . $search . "%' OR l.radiology_test like '%" . $search . "%' OR l.home_visit like '%" . $search . "%' ";
+        $where .= "AND u.name like '%" . $search . "%' OR l.mobile like '%" . $search . "%' OR l.center_name like '%" . $search . "%' OR l.center_address like '%" . $search . "%' OR l.manager_name like '%" . $search . "%' OR l.operational_hours like '%" . $search . "%' OR l.radiology_test like '%" . $search . "%' OR l.home_visit like '%" . $search . "%' OR l.remarks like '%" . $search . "%' ";
     }
     if (isset($_GET['sort'])) {
         $sort = $db->escapeString($_GET['sort']);
@@ -312,8 +318,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'lab_networks') {
     $tempRow = array();
     foreach ($res as $row) {
         
-        // $operate = '<a href="view-order.php?id=' . $row['id'] . '" class="label label-primary" title="View">View</a>';
-        // $operate = '<a class="btn-xs btn-danger" href="delete-booking.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
+        $operate = ' <a href="edit-lab_network.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
         $tempRow['datetime'] = $row['datetime'];
@@ -334,7 +339,14 @@ if (isset($_GET['table']) && $_GET['table'] == 'lab_networks') {
             $tempRow['image'] = 'No Image';
 
         }
-        //  $tempRow['operate'] = $operate;
+        $tempRow['remarks'] = $row['remarks'];
+        if($row['status'] == 1)
+            $tempRow['status'] = "<p class='text text-success'> Verified</p>";
+        elseif($row['status'] == 2)
+            $tempRow['status'] = "<p class='text text-danger'>Rejected</p>";
+        else
+            $tempRow['status'] = "<p class='text text-warning'>Pending</p>";
+        $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
     $bulkData['rows'] = $rows;
@@ -376,7 +388,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'pharmacy_networks') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($fn->xss_clean($_GET['search']));
-        $where .= "AND u.name like '%" . $search . "%' OR opd.mobile like '%" . $search . "%' OR opd.shop_name like '%" . $search . "%'  OR opd.address like '%" . $search . "%' ";
+        $where .= "AND u.name like '%" . $search . "%' OR opd.mobile like '%" . $search . "%' OR opd.shop_name like '%" . $search . "%'  OR opd.address like '%" . $search . "%' OR opd.remarks like '%" . $search . "%' ";
     }
     if (isset($_GET['sort'])) {
         $sort = $db->escapeString($_GET['sort']);
@@ -404,8 +416,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'pharmacy_networks') {
     $tempRow = array();
     foreach ($res as $row) {
         
-        // $operate = '<a href="view-order.php?id=' . $row['id'] . '" class="label label-primary" title="View">View</a>';
-        // $operate = '<a class="btn-xs btn-danger" href="delete-booking.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
+        $operate = ' <a href="edit-pharmacy_network.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
         $tempRow['datetime'] = $row['datetime'];
@@ -415,7 +426,14 @@ if (isset($_GET['table']) && $_GET['table'] == 'pharmacy_networks') {
         $tempRow['address'] = $row['address'];
         $tempRow['latitude'] = $row['latitude'];
         $tempRow['longitude'] = $row['longitude'];
-        //  $tempRow['operate'] = $operate;
+        $tempRow['remarks'] = $row['remarks'];
+        if($row['status'] == 1)
+            $tempRow['status'] = "<p class='text text-success'> Verified</p>";
+        elseif($row['status'] == 2)
+            $tempRow['status'] = "<p class='text text-danger'>Rejected</p>";
+        else
+            $tempRow['status'] = "<p class='text text-warning'>Pending</p>";
+        $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
     $bulkData['rows'] = $rows;
@@ -457,7 +475,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'dental_networks') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($fn->xss_clean($_GET['search']));
-        $where .= "AND u.name like '%" . $search . "%' OR d.mobile like '%" . $search . "%' OR d.clinic_name like '%" . $search . "%' OR d.address like '%" . $search . "%' OR d.oral_xray like '%" . $search . "%' ";
+        $where .= "AND u.name like '%" . $search . "%' OR d.mobile like '%" . $search . "%' OR d.clinic_name like '%" . $search . "%' OR d.address like '%" . $search . "%' OR d.oral_xray like '%" . $search . "%' OR d.remarks like '%" . $search . "%' ";
     }
     if (isset($_GET['sort'])) {
         $sort = $db->escapeString($_GET['sort']);
@@ -485,8 +503,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'dental_networks') {
     $tempRow = array();
     foreach ($res as $row) {
         
-        // $operate = '<a href="view-order.php?id=' . $row['id'] . '" class="label label-primary" title="View">View</a>';
-        // $operate = '<a class="btn-xs btn-danger" href="delete-booking.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
+        $operate = ' <a href="edit-dental_network.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
         $tempRow['datetime'] = $row['datetime'];
@@ -497,7 +514,14 @@ if (isset($_GET['table']) && $_GET['table'] == 'dental_networks') {
         $tempRow['address'] = $row['address'];
         $tempRow['latitude'] = $row['latitude'];
         $tempRow['longitude'] = $row['longitude'];
-        //  $tempRow['operate'] = $operate;
+        $tempRow['remarks'] = $row['remarks'];
+        if($row['status'] == 1)
+            $tempRow['status'] = "<p class='text text-success'> Verified</p>";
+        elseif($row['status'] == 2)
+            $tempRow['status'] = "<p class='text text-danger'>Rejected</p>";
+        else
+            $tempRow['status'] = "<p class='text text-warning'>Pending</p>";
+        $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
     $bulkData['rows'] = $rows;
@@ -540,7 +564,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'radiology_networks') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($fn->xss_clean($_GET['search']));
-        $where .= "AND u.name like '%" . $search . "%' OR r.mobile like '%" . $search . "%' OR r.center_name like '%" . $search . "%' OR r.center_address like '%" . $search . "%' OR r.manager_name like '%" . $search . "%' OR r.operational_hours like '%" . $search . "%' ";
+        $where .= "AND u.name like '%" . $search . "%' OR r.mobile like '%" . $search . "%' OR r.center_name like '%" . $search . "%' OR r.center_address like '%" . $search . "%' OR r.manager_name like '%" . $search . "%' OR r.operational_hours like '%" . $search . "%' OR r.remarks like '%" . $search . "%' ";
     }
     if (isset($_GET['sort'])) {
         $sort = $db->escapeString($_GET['sort']);
@@ -568,8 +592,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'radiology_networks') {
     $tempRow = array();
     foreach ($res as $row) {
         
-        // $operate = '<a href="view-order.php?id=' . $row['id'] . '" class="label label-primary" title="View">View</a>';
-        // $operate = '<a class="btn-xs btn-danger" href="delete-booking.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
+        $operate = ' <a href="edit-radiology_network.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
         $tempRow['datetime'] = $row['datetime'];
@@ -588,7 +611,14 @@ if (isset($_GET['table']) && $_GET['table'] == 'radiology_networks') {
             $tempRow['image'] = 'No Image';
 
         }
-        //  $tempRow['operate'] = $operate;
+        $tempRow['remarks'] = $row['remarks'];
+        if($row['status'] == 1)
+            $tempRow['status'] = "<p class='text text-success'> Verified</p>";
+        elseif($row['status'] == 2)
+            $tempRow['status'] = "<p class='text text-danger'>Rejected</p>";
+        else
+            $tempRow['status'] = "<p class='text text-warning'>Pending</p>";
+        $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }
     $bulkData['rows'] = $rows;

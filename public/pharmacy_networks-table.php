@@ -41,6 +41,9 @@
                                         <thead>
                                             <tr>
                                                 <th data-field="id" data-sortable="true">ID</th>
+                                                <th data-field="operate">Action</th>
+                                                <th data-field="status">Status</th>
+                                                <th data-field="remarks" data-sortable="true">Remarks</th>
                                                 <th data-field="name">User Name</th>
                                                 <th data-field="datetime" data-sortable="true">Datetime</th>
                                                 <th data-field="shop_name" data-sortable="true">Shop Name</th>

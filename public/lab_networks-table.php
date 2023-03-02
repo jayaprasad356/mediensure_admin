@@ -41,6 +41,9 @@
                                     <thead>
                                         <tr>
                                             <th data-field="id" data-sortable="true">ID</th>
+                                            <th data-field="operate">Action</th>
+                                            <th data-field="status">Status</th>
+                                            <th data-field="remarks" data-sortable="true">Remarks</th>
                                             <th data-field="name" data-sortable="false">User Name</th>
                                             <th data-field="datetime" data-sortable="true">Datetime</th>
                                             <th data-field="center_name" data-sortable="true">Center Name</th>
@@ -54,8 +57,7 @@
                                             <th data-field="latitude" data-sortable="true">Latitude</th>
                                             <th data-field="longitude" data-sortable="true">Longitude</th>
                                             <th data-field="image">Image</th>
-                                            <!-- <th data-field="operate">Action</th> -->
-                            
+                                            
                             
                                         </tr>
                                     </thead>
