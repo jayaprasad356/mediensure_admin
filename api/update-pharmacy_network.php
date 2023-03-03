@@ -62,6 +62,12 @@ if (empty($_POST['longitude'])) {
     print_r(json_encode($response));
     return false;
 }
+if (empty($_POST['oprational_hours'])) {
+    $response['success'] = false;
+    $response['message'] = "Operational Hours is Empty";
+    print_r(json_encode($response));
+    return false;
+}
 
 $user_id = $db->escapeString($_POST['user_id']);
 $inventory_id = $db->escapeString($_POST['inventory_id']);
@@ -69,6 +75,7 @@ $shop_name = $db->escapeString($_POST['shop_name']);
 $mobile = $db->escapeString($_POST['mobile']);
 $email = $db->escapeString($_POST['email']);
 $address = $db->escapeString($_POST['address']);
+$operational_hours = $db->escapeString($_POST['operational_hours']);
 $latitude = $db->escapeString($_POST['latitude']);
 $longitude = $db->escapeString($_POST['longitude']);
 
@@ -78,7 +85,7 @@ $db->sql($sql);
 $res = $db->getResult();
 $num = $db->numRows($res);
 if ($num >= 1) {
-    $sql = "UPDATE pharmacy_networks SET shop_name='$shop_name',mobile='$mobile',email='$email',address='$address',latitude='$latitude',longitude='$longitude' WHERE id = '$inventory_id'";
+    $sql = "UPDATE pharmacy_networks SET shop_name='$shop_name',mobile='$mobile',email='$email',address='$address',operational_hours='$operational_hours',latitude='$latitude',longitude='$longitude' WHERE id = '$inventory_id'";
     $db->sql($sql);
     $sql = "SELECT * FROM pharmacy_networks WHERE id=" . $inventory_id;
     $db->sql($sql);

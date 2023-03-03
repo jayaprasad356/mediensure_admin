@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2023 at 08:29 AM
+-- Generation Time: Mar 03, 2023 at 12:53 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -140,6 +140,7 @@ CREATE TABLE `pharmacy_networks` (
   `address` varchar(255) DEFAULT NULL,
   `email` text DEFAULT NULL,
   `mobile` text DEFAULT NULL,
+  `operational_hours` text DEFAULT '',
   `latitude` text DEFAULT NULL,
   `longitude` text DEFAULT NULL,
   `datetime` text DEFAULT NULL,
@@ -151,8 +152,8 @@ CREATE TABLE `pharmacy_networks` (
 -- Dumping data for table `pharmacy_networks`
 --
 
-INSERT INTO `pharmacy_networks` (`id`, `user_id`, `shop_name`, `address`, `email`, `mobile`, `latitude`, `longitude`, `datetime`, `remarks`, `status`) VALUES
-(1, 1, 'Lalli Pharmacy', 'Trichy', 'lallispharm@gmail.com', '9787012346', '74.09123', '14.00393', '2023-02-20 11:18:05', 'Hi You have addded more than Fifteen Inventories', 2);
+INSERT INTO `pharmacy_networks` (`id`, `user_id`, `shop_name`, `address`, `email`, `mobile`, `operational_hours`, `latitude`, `longitude`, `datetime`, `remarks`, `status`) VALUES
+(1, 1, 'Lalli Pharmacy', 'Trichy', 'lallispharm@gmail.com', '9787012346', '', '74.09123', '14.00393', '2023-02-20 11:18:05', 'Hi You have addded more than Fifteen Inventories', 2);
 
 -- --------------------------------------------------------
 

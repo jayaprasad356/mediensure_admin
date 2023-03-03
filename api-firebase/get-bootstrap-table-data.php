@@ -424,6 +424,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'pharmacy_networks') {
         $tempRow['mobile'] = $row['mobile'];
         $tempRow['email'] = $row['email'];
         $tempRow['address'] = $row['address'];
+        $tempRow['operational_hours'] = $row['operational_hours'];
         $tempRow['latitude'] = $row['latitude'];
         $tempRow['longitude'] = $row['longitude'];
         $tempRow['remarks'] = $row['remarks'];

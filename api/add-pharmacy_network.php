@@ -55,12 +55,19 @@ if (empty($_POST['longitude'])) {
     print_r(json_encode($response));
     return false;
 }
+if (empty($_POST['oprational_hours'])) {
+    $response['success'] = false;
+    $response['message'] = "Operational Hours is Empty";
+    print_r(json_encode($response));
+    return false;
+}
 
 $user_id = $db->escapeString($_POST['user_id']);
 $shop_name = $db->escapeString($_POST['shop_name']);
 $mobile = $db->escapeString($_POST['mobile']);
 $email = $db->escapeString($_POST['email']);
 $address = $db->escapeString($_POST['address']);
+$operational_hours = $db->escapeString($_POST['operational_hours']);
 $latitude = $db->escapeString($_POST['latitude']);
 $longitude = $db->escapeString($_POST['longitude']);
 $datetime=date('Y-m-d H:i:s');
@@ -77,7 +84,7 @@ $datetime=date('Y-m-d H:i:s');
 // }
 // else{
   
-    $sql = "INSERT INTO pharmacy_networks (`user_id`,`shop_name`,`mobile`,`email`,`address`,`latitude`,`longitude`,`datetime`) VALUES ('$user_id','$shop_name','$mobile','$email','$address','$latitude','$longitude','$datetime')";
+    $sql = "INSERT INTO pharmacy_networks (`user_id`,`shop_name`,`mobile`,`email`,`address`,`operational_hours`,`latitude`,`longitude`,`datetime`) VALUES ('$user_id','$shop_name','$mobile','$email','$address','$operational_hours','$latitude','$longitude','$datetime')";
     $db->sql($sql);
     $sql = "SELECT * FROM pharmacy_networks WHERE shop_name = '$shop_name' AND mobile='$mobile'";
     $db->sql($sql);

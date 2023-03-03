@@ -48,6 +48,7 @@
                                                 <th data-field="datetime" data-sortable="true">Datetime</th>
                                                 <th data-field="shop_name" data-sortable="true">Shop Name</th>
                                                 <th data-field="address" data-sortable="true">Address</th>
+                                                <th data-field="operational_hours" data-sortable="true">Operational Hours</th>
                                                 <th data-field="email" data-sortable="true">Email</th>
                                                 <th data-field="mobile" data-sortable="true">Mobile Number</th>
                                                 <th data-field="latitude" data-sortable="true">Latitude</th>
