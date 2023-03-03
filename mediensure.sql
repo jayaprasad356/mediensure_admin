@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2023 at 09:07 AM
+-- Generation Time: Mar 03, 2023 at 08:29 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -66,7 +66,7 @@ CREATE TABLE `dental_networks` (
 --
 
 INSERT INTO `dental_networks` (`id`, `user_id`, `clinic_name`, `email`, `mobile`, `address`, `oral_xray`, `latitude`, `longitude`, `datetime`, `remarks`, `status`) VALUES
-(1, 1, 'Sella Dental Clinic', 'sellandentals56@gmail.com', '6532883012', 'Coimbatore', 'Yes', '70.64671', '14.00393', '2023-03-02 11:14:19', 'hnghfhthth', 1);
+(1, 1, 'Sella Dental Clinic', 'sellandentals56@gmail.com', '6532883013', 'Coimbatore', 'Yes', '70.64674', '14.00393', '2023-03-02 11:14:19', 'hnghfhthth', 1);
 
 -- --------------------------------------------------------
 
@@ -98,7 +98,7 @@ CREATE TABLE `lab_networks` (
 --
 
 INSERT INTO `lab_networks` (`id`, `user_id`, `center_name`, `email`, `mobile`, `manager_name`, `center_address`, `operational_hours`, `radiology_test`, `home_visit`, `latitude`, `longitude`, `image`, `datetime`, `remarks`, `status`) VALUES
-(1, 1, 'Renuga Lab\'s', 'labrenuga43@gmail.com', '765410921', 'Sri Yogesh', 'Seppakam', '9:00 - 5:00', 'Available', 'Yes', 65.9902, '14.2344', '1676958418.7172.png', '2023-02-21 11:16:58', 'Hello', 2);
+(1, 1, 'Renuga Lab\'s', 'labrenuga43@gmail.com', '765410921', 'Sri Yogesh', 'Seppakam', '9:00 - 5:00', 'Available', 'Yes', 65.9902, '14.2344', '1677827366.3177.jpg', '2023-02-21 11:16:58', 'Hello', 2);
 
 -- --------------------------------------------------------
 
@@ -152,7 +152,7 @@ CREATE TABLE `pharmacy_networks` (
 --
 
 INSERT INTO `pharmacy_networks` (`id`, `user_id`, `shop_name`, `address`, `email`, `mobile`, `latitude`, `longitude`, `datetime`, `remarks`, `status`) VALUES
-(1, 1, 'Lalli Pharmacy', 'Trichy', 'lallispharm@gmail.com', '9787012346', '74.09123', '14.29301', '2023-02-20 11:18:05', 'Hi You have addded more than Fifteen Inventories', 2);
+(1, 1, 'Lalli Pharmacy', 'Trichy', 'lallispharm@gmail.com', '9787012346', '74.09123', '14.00393', '2023-02-20 11:18:05', 'Hi You have addded more than Fifteen Inventories', 2);
 
 -- --------------------------------------------------------
 
@@ -182,7 +182,7 @@ CREATE TABLE `radiology_networks` (
 --
 
 INSERT INTO `radiology_networks` (`id`, `user_id`, `center_name`, `email`, `mobile`, `manager_name`, `center_address`, `operational_hours`, `latitude`, `longitude`, `image`, `datetime`, `remarks`, `status`) VALUES
-(1, 1, 'Vengatash Radilogy Services', 'vengatash7884@gmail.com', '7489099321', 'Jeya', 'Cudalore', '9:00 - 5:00', 74.8744, '14.23123', '1677563677.3806.jpg', '2023-02-28 11:24:37', NULL, 0);
+(1, 1, 'Vengatash Radilogy Services', 'vengatash7884@gmail.com', '7489099321', 'Jeya', 'Cudalore', '9:00 - 4:00', 74.8744, '14.23123', '1677825966.3226.jpg', '2023-02-28 11:24:37', NULL, 0);
 
 -- --------------------------------------------------------
 
