@@ -50,10 +50,40 @@ if ($num >= 1) {
     ) AS combined_tables";
     $db->sql($sql);
     $result1 = $db->getResult();
+
+    //Total Users Count
+    $sql = "SELECT * FROM users";
+    $db->sql($sql);
+    $res1 = $db->getResult();
+    $num1 = $db->numRows($res1);
+
+    //Verified Users Count
+    $sql = "SELECT * FROM users WHERE status=1";
+    $db->sql($sql);
+    $res2 = $db->getResult();
+    $num2 = $db->numRows($res2);
+
+    //Not-verified Users Count
+    $sql = "SELECT * FROM users WHERE status=0";
+    $db->sql($sql);
+    $res3 = $db->getResult();
+    $num3 = $db->numRows($res3);
+
+    //Blocked Users Count
+    $sql = "SELECT * FROM users WHERE status=2";
+    $db->sql($sql);
+    $res4= $db->getResult();
+    $num4 = $db->numRows($res4);
+
+
     $response['success'] = true;
     $response['message'] = "User Details Successfully Retrived";
     $response['total_inventories'] =$result[0]['total_rows'];
     $response['today_inventories'] =$result1[0]['today_rows'];
+    $response['total_users'] =$num1;
+    $response['verified_users'] =$num2;
+    $response['not_verified_users'] =$num3;
+    $response['blocked_users'] =$num4;
     $response['data'] = $res;
     print_r(json_encode($response));
 

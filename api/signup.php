@@ -49,7 +49,7 @@ if ($num >= 1) {
 }
 else{
 
-    $sql = "INSERT INTO users (`name`,`mobile`,`email`) VALUES ('$name','$mobile','$email')";
+    $sql = "INSERT INTO users (`name`,`mobile`,`email`,`status`) VALUES ('$name','$mobile','$email',0)";
     $db->sql($sql);
     $sql = "SELECT * FROM users WHERE mobile = '$mobile'";
     $db->sql($sql);

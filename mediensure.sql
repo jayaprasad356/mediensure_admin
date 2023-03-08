@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2023 at 12:53 PM
+-- Generation Time: Mar 08, 2023 at 12:35 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -195,15 +195,16 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `mobile` text DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL
+  `email` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT 0 COMMENT 'Verified-1 |\r\nNot-verified -0 |\r\nBlocked -2'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `mobile`, `email`) VALUES
-(1, 'sanjay', '8742443011', 'sanjay3s@gmail.com');
+INSERT INTO `users` (`id`, `name`, `mobile`, `email`, `status`) VALUES
+(1, 'sanjay', '8742443011', 'sanjay3s@gmail.com', 1);
 
 --
 -- Indexes for dumped tables

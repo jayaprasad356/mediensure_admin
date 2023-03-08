@@ -12,6 +12,7 @@ if (isset($_POST['btnAdd'])) {
         $name = $db->escapeString(($_POST['name']));
         $mobile = $db->escapeString(($_POST['mobile']));
         $email = $db->escapeString(($_POST['email']));
+        $status = $db->escapeString(($_POST['status']));
 		$error = array();
 
 
@@ -34,7 +35,7 @@ if (isset($_POST['btnAdd'])) {
             if ($res) {
                 $error['add_user'] = " <section class='content-header'><span class='label label-danger'>User already exist</span></section>";
             } else {
-                    $sql="INSERT INTO `users`(`name`, `mobile`, `email`) VALUES ('$name','$mobile','$email')";
+                    $sql="INSERT INTO `users`(`name`, `mobile`, `email`,`status`) VALUES ('$name','$mobile','$email',0)";
                     $db->sql($sql);
                     $result = $db->getResult();
                     if (!empty($result)) {
