@@ -93,6 +93,12 @@ if (isset($_GET['table']) && $_GET['table'] == 'users') {
         $tempRow['name'] = $row['name'];
         $tempRow['email'] = $row['email'];
         $tempRow['mobile'] = $row['mobile'];
+        if($row['status'] == 1)
+             $tempRow['status'] = "<p class='text text-success'> Verified</p>";
+        elseif($row['status'] == 2)
+            $tempRow['status'] = "<p class='text text-danger'>Blocked</p>";
+        else
+            $tempRow['status'] = "<p class='text text-warning'>Not-verified</p>";
         $tempRow['operate'] = $operate;
         $rows[] = $tempRow;
     }

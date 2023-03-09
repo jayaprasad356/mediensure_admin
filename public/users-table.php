@@ -29,6 +29,7 @@
                                     <th data-field="name" data-sortable="true">Name</th>
                                     <th data-field="mobile" data-sortable="true">Mobile Number</th>
                                     <th data-field="email" data-sortable="true">Email Id</th>
+                                    <th data-field="status" data-sortable="true">Status</th>
                                     <th data-field="operate">Action</th>
                     
                     
