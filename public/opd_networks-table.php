@@ -46,6 +46,7 @@
                                             <th data-field="remarks" data-sortable="true">Remarks</th>
                                             <th data-field="name">User Name</th>
                                             <th data-field="datetime" data-sortable="true">Datetime</th>
+                                            <th data-field="category" data-sortable="true">Category</th>
                                             <th data-field="clinic_name" data-sortable="true">Cinic/Hospital Name</th>
                                             <th data-field="address" data-sortable="true">Address</th>
                                             <th data-field="email" data-sortable="true">Email</th>

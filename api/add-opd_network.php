@@ -18,6 +18,12 @@ if (empty($_POST['user_id'])) {
     print_r(json_encode($response));
     return false;
 }
+if (empty($_POST['category'])) {
+    $response['success'] = false;
+    $response['message'] = "Category is Empty";
+    print_r(json_encode($response));
+    return false;
+}
 if (empty($_POST['name'])) {
     $response['success'] = false;
     $response['message'] = "Name is Empty";
@@ -56,6 +62,7 @@ if (empty($_POST['longitude'])) {
 }
 
 $user_id = $db->escapeString($_POST['user_id']);
+$category = $db->escapeString($_POST['category']);
 $name = $db->escapeString($_POST['name']);
 $mobile = $db->escapeString($_POST['mobile']);
 $email = $db->escapeString($_POST['email']);
@@ -75,7 +82,7 @@ $datetime=date('Y-m-d H:i:s');
 // }
 // else{
 
-    $sql = "INSERT INTO opd_networks (`user_id`,`name`,`mobile`,`email`,`address`,`latitude`,`longitude`,`datetime`) VALUES ('$user_id','$name','$mobile','$email','$address','$latitude','$longitude','$datetime')";
+    $sql = "INSERT INTO opd_networks (`user_id`,`category`,`name`,`mobile`,`email`,`address`,`latitude`,`longitude`,`datetime`) VALUES ('$user_id','$category','$name','$mobile','$email','$address','$latitude','$longitude','$datetime')";
     $db->sql($sql);
     $sql = "SELECT * FROM opd_networks WHERE mobile = '$mobile' AND name='$name'";
     $db->sql($sql);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2023 at 12:35 PM
+-- Generation Time: Mar 09, 2023 at 06:00 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -109,6 +109,7 @@ INSERT INTO `lab_networks` (`id`, `user_id`, `center_name`, `email`, `mobile`, `
 CREATE TABLE `opd_networks` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
+  `category` text DEFAULT '',
   `name` varchar(255) DEFAULT NULL,
   `address` text DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -124,8 +125,8 @@ CREATE TABLE `opd_networks` (
 -- Dumping data for table `opd_networks`
 --
 
-INSERT INTO `opd_networks` (`id`, `user_id`, `name`, `address`, `email`, `mobile`, `latitude`, `longitude`, `datetime`, `remarks`, `status`) VALUES
-(1, 1, 'Vengat Clinic', 'Tambaram,Chennai', 'vengatclinic45@gmail.com', '9076123043', '74.90123', '10.23347', '2023-02-21 11:14:30', 'This is verified', 1);
+INSERT INTO `opd_networks` (`id`, `user_id`, `category`, `name`, `address`, `email`, `mobile`, `latitude`, `longitude`, `datetime`, `remarks`, `status`) VALUES
+(1, 1, '', 'Vengat Clinic', 'Tambaram,Chennai', 'vengatclinic45@gmail.com', '9076123043', '74.90123', '10.23347', '2023-02-21 11:14:30', 'This is verified', 1);
 
 -- --------------------------------------------------------
 

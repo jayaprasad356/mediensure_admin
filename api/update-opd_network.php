@@ -65,6 +65,7 @@ if (empty($_POST['longitude'])) {
 
 $user_id = $db->escapeString($_POST['user_id']);
 $inventory_id = $db->escapeString($_POST['inventory_id']);
+$category = $db->escapeString($_POST['category']);
 $name = $db->escapeString($_POST['name']);
 $mobile = $db->escapeString($_POST['mobile']);
 $email = $db->escapeString($_POST['email']);
@@ -78,7 +79,7 @@ $db->sql($sql);
 $res = $db->getResult();
 $num = $db->numRows($res);
 if ($num >= 1) {
-    $sql = "UPDATE opd_networks SET name='$name',mobile='$mobile',email='$email',address='$address',latitude='$latitude',longitude='$longitude' WHERE id = '$inventory_id'";
+    $sql = "UPDATE opd_networks SET name='$name',category='$category',mobile='$mobile',email='$email',address='$address',latitude='$latitude',longitude='$longitude' WHERE id = '$inventory_id'";
     $db->sql($sql);
     $sql = "SELECT * FROM opd_networks WHERE id=" . $inventory_id;
     $db->sql($sql);

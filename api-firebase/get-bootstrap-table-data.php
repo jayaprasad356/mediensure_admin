@@ -204,7 +204,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'opd_networks') {
 
     if (isset($_GET['search']) && !empty($_GET['search'])) {
         $search = $db->escapeString($fn->xss_clean($_GET['search']));
-        $where .= "AND u.name like '%" . $search . "%' OR opd.mobile like '%" . $search . "%' OR opd.name like '%" . $search . "%'  OR opd.address like '%" . $search . "%' OR opd.remarks like '%" . $search . "%' ";
+        $where .= "AND u.name like '%" . $search . "%' OR opd.mobile like '%" . $search . "%' OR opd.name like '%" . $search . "%'  OR opd.address like '%" . $search . "%' OR opd.remarks like '%" . $search . "%' OR opd.category like '%" . $search . "%' ";
     }
     if (isset($_GET['sort'])) {
         $sort = $db->escapeString($_GET['sort']);
@@ -236,6 +236,7 @@ if (isset($_GET['table']) && $_GET['table'] == 'opd_networks') {
         $tempRow['id'] = $row['id'];
         $tempRow['name'] = $row['name'];
         $tempRow['datetime'] = $row['datetime'];
+        $tempRow['category'] = $row['category'];
         $tempRow['clinic_name'] = $row['clinic_name'];
         $tempRow['mobile'] = $row['mobile'];
         $tempRow['email'] = $row['email'];
