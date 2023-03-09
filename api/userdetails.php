@@ -33,10 +33,14 @@ if ($num >= 1) {
         UNION ALL
         SELECT user_id FROM pharmacy_networks WHERE user_id ='$user_id'
         UNION ALL
+        SELECT user_id FROM radiology_networks WHERE user_id ='$user_id'
+        UNION ALL
         SELECT user_id FROM opd_networks WHERE user_id ='$user_id'
     ) AS combined_tables";
     $db->sql($sql);
     $result = $db->getResult();
+
+
     // i want to get the today inventories count
     $sql="SELECT COUNT(*) AS today_rows FROM
     (
@@ -46,44 +50,69 @@ if ($num >= 1) {
         UNION ALL
         SELECT user_id FROM pharmacy_networks WHERE user_id ='$user_id' AND DATE(datetime) = '$date'
         UNION ALL
+        SELECT user_id FROM radiology_networks WHERE user_id ='$user_id' AND DATE(datetime) = '$date'
+        UNION ALL
         SELECT user_id FROM opd_networks WHERE user_id ='$user_id' AND DATE(datetime) = '$date'
     ) AS combined_tables";
     $db->sql($sql);
     $result1 = $db->getResult();
 
-    //Total Users Count
-    $sql = "SELECT * FROM users";
+    //Verified Networks Count
+    $sql="SELECT COUNT(*) AS verified_inventories FROM
+    (
+        SELECT user_id FROM lab_networks WHERE user_id ='$user_id' AND status=1
+        UNION ALL
+        SELECT user_id FROM dental_networks WHERE user_id ='$user_id' AND status=1
+        UNION ALL
+        SELECT user_id FROM pharmacy_networks WHERE user_id ='$user_id' AND status=1
+        UNION ALL
+        SELECT user_id FROM radiology_networks WHERE user_id ='$user_id' AND status=1
+        UNION ALL
+        SELECT user_id FROM opd_networks WHERE user_id ='$user_id' AND status=1
+    ) AS combined_tables";
     $db->sql($sql);
     $res1 = $db->getResult();
-    $num1 = $db->numRows($res1);
 
-    //Verified Users Count
-    $sql = "SELECT * FROM users WHERE status=1";
+    //Pending Networks Count
+    $sql="SELECT COUNT(*) AS pending_inventories FROM
+    (
+        SELECT user_id FROM lab_networks WHERE user_id ='$user_id' AND status=0
+        UNION ALL
+        SELECT user_id FROM dental_networks WHERE user_id ='$user_id' AND status=0
+        UNION ALL
+        SELECT user_id FROM pharmacy_networks WHERE user_id ='$user_id' AND status=0
+        UNION ALL
+        SELECT user_id FROM radiology_networks WHERE user_id ='$user_id' AND status=0
+        UNION ALL
+        SELECT user_id FROM opd_networks WHERE user_id ='$user_id' AND status=0
+    ) AS combined_tables";
     $db->sql($sql);
     $res2 = $db->getResult();
-    $num2 = $db->numRows($res2);
 
-    //Not-verified Users Count
-    $sql = "SELECT * FROM users WHERE status=0";
+    //Rejected Networks Count
+    $sql="SELECT COUNT(*) AS rejected_inventories FROM
+    (
+        SELECT user_id FROM lab_networks WHERE user_id ='$user_id' AND status=2
+        UNION ALL
+        SELECT user_id FROM dental_networks WHERE user_id ='$user_id' AND status=2
+        UNION ALL
+        SELECT user_id FROM pharmacy_networks WHERE user_id ='$user_id' AND status=2
+        UNION ALL
+        SELECT user_id FROM radiology_networks WHERE user_id ='$user_id' AND status=2
+        UNION ALL
+        SELECT user_id FROM opd_networks WHERE user_id ='$user_id' AND status=2
+    ) AS combined_tables";
     $db->sql($sql);
     $res3 = $db->getResult();
-    $num3 = $db->numRows($res3);
-
-    //Blocked Users Count
-    $sql = "SELECT * FROM users WHERE status=2";
-    $db->sql($sql);
-    $res4= $db->getResult();
-    $num4 = $db->numRows($res4);
 
 
     $response['success'] = true;
     $response['message'] = "User Details Successfully Retrived";
     $response['total_inventories'] =$result[0]['total_rows'];
     $response['today_inventories'] =$result1[0]['today_rows'];
-    $response['total_users'] =$num1;
-    $response['verified_users'] =$num2;
-    $response['not_verified_users'] =$num3;
-    $response['blocked_users'] =$num4;
+    $response['verified_inventories'] =$res1[0]['verified_inventories'];
+    $response['pending_inventories'] =$res2[0]['pending_inventories'];
+    $response['rejected_inventories'] =$res3[0]['rejected_inventories'];
     $response['data'] = $res;
     print_r(json_encode($response));
 
