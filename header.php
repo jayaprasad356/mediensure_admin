@@ -167,18 +167,24 @@ $fn = new custom_functions;
                         <span>Home</span>
                     </a>
                 </li>
-                <li class="treeview">
-                    <a href="users.php">
-                        <i class="fa fa-user"></i>
-                        <span>Users</span>
-                    </a>
-                </li>
-                <!-- <li class="treeview">
-                    <a href="categories.php">
-                        <i class="fa fa-bullseye"></i>
-                        <span>Categories</span>
-                    </a>
-                </li> -->
+                <?php
+                if($_SESSION['role'] == 'Super Admin'){?>
+                    <li class="treeview">
+                        <a href="users.php">
+                            <i class="fa fa-users"></i>
+                            <span>Users</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="admins.php">
+                            <i class="fa fa-user"></i>
+                            <span>Multiple Admins</span>
+                        </a>
+                    </li>
+                <?php }
+                ?>
+
+
                 <li class="treeview">
                     <a href="opd_networks.php">
                         <i class="fa fa-building"></i>

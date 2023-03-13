@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2023 at 06:00 AM
+-- Generation Time: Mar 13, 2023 at 09:14 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `mediensure`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `name` text DEFAULT '',
+  `email` varchar(255) DEFAULT '',
+  `mobile` text DEFAULT '',
+  `password` varchar(255) DEFAULT '',
+  `role` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT 0 COMMENT 'Verified -1 |\r\nNot-verified - 0 |\r\nBlocked - 2'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `mobile`, `password`, `role`, `status`) VALUES
+(1, 'Mediensure', 'mediensure@gmail.com', '9876543210', 'admin123', 'Super Admin', 1);
 
 -- --------------------------------------------------------
 
@@ -212,6 +235,12 @@ INSERT INTO `users` (`id`, `name`, `mobile`, `email`, `status`) VALUES
 --
 
 --
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
@@ -256,6 +285,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `categories`

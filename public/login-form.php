@@ -30,11 +30,15 @@ if (isset($_POST['btnLogin'])) {
 
     // if email and password is not empty, check in database
     if (!empty($mobile) && !empty($password)) {
-        if($mobile == '9876543210' && $password == 'admin123'){
-            $_SESSION['id'] = '1';
-            $_SESSION['role'] ='admin';
-            $_SESSION['username'] = 'username';
-            $_SESSION['email'] = 'admin@gmail.com';
+        $sql_query = "SELECT * FROM admins WHERE mobile = '$mobile' AND password = '$password' AND status = 1";
+        $db->sql($sql_query);
+        $res = $db->getResult();
+        $num = $db->numRows($res);
+        if($num == 1){
+            $_SESSION['id'] = $res[0]['id'];
+            $_SESSION['role'] = $res[0]['role'];
+            $_SESSION['username'] = $res[0]['name'];
+            $_SESSION['mobile'] = $res[0]['mobile'];
             $_SESSION['timeout'] = $currentTime + $expired;
             header("location: home.php");
             
@@ -46,12 +50,12 @@ if (isset($_POST['btnLogin'])) {
 }
 ?>
 <?php echo isset($error['update_user']) ? $error['update_user'] : ''; ?>
-<div class="col-md-4 col-md-offset-4 " style="margin-top:150px;">
+<div class="col-md-4 col-md-offset-4 " style="margin-top:100px;">
     <!-- general form elements -->
     <div class='row'>
         <div class="col-md-12 text-center">
-            <img src="dist/img/logo.jpeg" height="100" width="250">
-            <!-- <h3>Admin-Dashboard</h3> -->
+            <img src="dist/img/logo.jpeg" height="110">
+            <h3>Mediensure -Dashboard</h3>
         </div>
         <div class="box box-info col-md-12">
             <div class="box-header with-border">
@@ -65,11 +69,11 @@ if (isset($_POST['btnLogin'])) {
                 <div class="box-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Mobile :</label>
-                        <input type="number" name="mobile" class="form-control" value="<?= defined('ALLOW_MODIFICATION') && ALLOW_MODIFICATION == 0 ? '9876543210' : '' ?>" required>
+                        <input type="number" name="mobile" class="form-control" value="" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Password :</label>
-                        <input type="password" class="form-control" name="password" value="<?= defined('ALLOW_MODIFICATION') && ALLOW_MODIFICATION == 0 ? 'admin123' : '' ?>" required>
+                        <input type="password" class="form-control" name="password" value="" required>
                     </div>
                     <div class="box-footer">
                         <button type="submit" name="btnLogin" class="btn btn-info pull-left">Login</button>

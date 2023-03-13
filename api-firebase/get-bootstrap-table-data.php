@@ -633,4 +633,70 @@ if (isset($_GET['table']) && $_GET['table'] == 'radiology_networks') {
     print_r(json_encode($bulkData));
 }
 
+if (isset($_GET['table']) && $_GET['table'] == 'admins') {
+
+    $offset = 0;
+    $limit = 10;
+    $where = '';
+    $sort = 'id';
+    $order = 'DESC';
+    if (isset($_GET['offset']))
+        $offset = $db->escapeString($_GET['offset']);
+    if (isset($_GET['limit']))
+        $limit = $db->escapeString($_GET['limit']);
+    if (isset($_GET['sort']))
+        $sort = $db->escapeString($_GET['sort']);
+    if (isset($_GET['order']))
+        $order = $db->escapeString($_GET['order']);
+
+    if (isset($_GET['search']) && !empty($_GET['search'])) {
+        $search = $db->escapeString($_GET['search']);
+        $where .= "WHERE name like '%" . $search . "%' OR id like '%" . $search . "%'  OR mobile like '%" . $search . "%' OR email like '%" . $search . "%' OR role like '%" . $search . "%'";
+    }
+    if (isset($_GET['sort'])){
+        $sort = $db->escapeString($_GET['sort']);
+    }
+    if (isset($_GET['order'])){
+        $order = $db->escapeString($_GET['order']);
+    }
+    $sql = "SELECT COUNT(`id`) as total FROM `admins` ";
+    $db->sql($sql);
+    $res = $db->getResult();
+    foreach ($res as $row)
+        $total = $row['total'];
+   
+    $sql = "SELECT * FROM admins " . $where . " ORDER BY " . $sort . " " . $order . " LIMIT " . $offset . ", " . $limit;
+    $db->sql($sql);
+    $res = $db->getResult();
+
+    $bulkData = array();
+    $bulkData['total'] = $total;
+    
+    $rows = array();
+    $tempRow = array();
+
+    foreach ($res as $row) {
+
+        
+        $operate = ' <a href="edit-admin.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i>Edit</a>';
+        $operate .= ' <a class="btn-xs btn-danger" href="delete-admin.php?id=' . $row['id'] . '"><i class="fa fa-trash-o"></i>Delete</a>';
+        $tempRow['id'] = $row['id'];
+        $tempRow['name'] = $row['name'];
+        $tempRow['mobile'] = $row['mobile'];
+        $tempRow['email'] = $row['email'];
+        $tempRow['password'] = $row['password'];
+        $tempRow['role'] = $row['role'];
+        if($row['status'] == 1)
+             $tempRow['status'] = "<p class='text text-success'> Verified</p>";
+        elseif($row['status'] == 2)
+            $tempRow['status'] = "<p class='text text-danger'>Blocked</p>";
+        else
+            $tempRow['status'] = "<p class='text text-warning'>Not-verified</p>";
+        $tempRow['operate'] = $operate;
+        $rows[] = $tempRow;
+    }
+    $bulkData['rows'] = $rows;
+    print_r(json_encode($bulkData));
+}
+
 $db->disconnect();
